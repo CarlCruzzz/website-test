@@ -1,0 +1,1 @@
+Put your actual E-Viejo logo here and name it logo.png. All portal pages reference ../assets/logo.png.

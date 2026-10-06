@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="E-Viejo — Barangay Guadalupe Viejo, Makati City digital resident services portal.">
+  <title>Resident Portal | E-Viejo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/jpeg" href="../assets/viejo.jpg">
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+<section class="app-screen">
+      <aside class="sidebar ">
+      <a class="brand side-brand" href="resident.html">
+        <div class="side-logo"><img src="../assets/viejo.jpg" alt="E-Viejo logo" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span>GV</span></div>
+        <div class="side-brand-copy"><strong>E-Viejo</strong><small>Resident Portal</small></div>
+      </a>
+      <div class="side-welcome">Resident services</div>
+      <nav class="side-nav"><a class="side-link active" href="resident.html"><span class="side-icon">⌂</span><span>Dashboard</span></a><a class="side-link" href="request.html"><span class="side-icon">▣</span><span>Request Services</span></a><a class="side-link" href="tracker.html"><span class="side-icon">⌁</span><span>Request Tracker</span></a><a class="side-link" href="digital-id.html"><span class="side-icon">▤</span><span>Digital ID</span></a><a class="side-link" href="physical-id.html"><span class="side-icon">▥</span><span>Physical ID</span></a><a class="side-link" href="payments.html"><span class="side-icon">₱</span><span>Payments (Cash)</span></a><a class="side-link" href="announcements.html"><span class="side-icon">◉</span><span>Announcements</span></a><a class="side-link" href="profile.html"><span class="side-icon">♙</span><span>Profile & Security</span></a></nav>
+      <div class="side-bottom">
+        <div class="side-help"><span>?</span><div><strong>Need help?</strong><small>Visit the barangay office</small></div></div>
+        <a class="logout" href="../index.html"><span class="side-icon">↪</span><span>Logout</span></a>
+      </div>
+    </aside>
+      <div class="app-content">
+        <header class="app-topbar">
+      <div><button class="mobile-menu" id="mobileMenu">☰</button><span class="page-label">Resident Portal</span></div>
+       <div class="top-user"><span></span><div class="avatar">JD</div><strong>Juan Dela Cruz</strong><span></span></div>
+    </header>
+        <main class="page">
+<div class="page-heading"><div><span class="eyebrow">GUADALUPE VIEJO, MAKATI CITY</span><h1>Good day, Juan Dela Cruz!</h1><p class="muted">Your personal barangay services overview — requests, complaints, ID status, and announcements.</p></div><div style="display:flex; gap:10px; flex-wrap:wrap;"><a class="btn btn-outline" href="request.html?open=complaint" style="border-color:#c94747; color:#c94747; font-weight:700;">File a Complaint</a><a class="btn btn-primary" href="request.html">+ New Request</a></div></div>
+<div id="residentActiveNotice" class="notice" style="display:none; margin-bottom:16px"></div>
+<div class="stat-grid">
+  <div class="stat-card blue-stat"><small>My Requests</small><strong id="dashMyRequests">0</strong><span>Total submitted</span></div>
+  <div class="stat-card yellow-stat"><small>Pending</small><strong id="dashMyPending">0</strong><span>For processing</span></div>
+  <div class="stat-card green-stat"><small>Approved</small><strong id="dashMyApproved">0</strong><span>This month</span></div>
+  <div class="stat-card purple-stat"><small>My Complaints</small><strong id="dashMyComplaints">0</strong><span>Filed blotters</span></div>
+</div>
+<div class="dashboard-grid">
+
+<section class="panel requests-panel"><div class="panel-head"><h2>My Recent Requests</h2><a class="text-btn" href="tracker.html">View All</a></div><div class="request-list" id="residentDashRequests">
+  <div style="text-align:center; padding:24px 16px; color:var(--muted); font-size:13px;">No requests submitted yet.</div>
+</div></section>
+
+<section class="panel"><div class="panel-head"><h2>My Blotter Complaints</h2><a class="text-btn" href="tracker.html">View All</a></div>
+<div id="residentDashComplaints" style="display:flex; flex-direction:column; gap:8px;">
+  <div style="text-align:center; padding:24px 16px; color:var(--muted);">
+    <p style="font-size:13px; margin:0;">No complaints filed yet.</p>
+    <a class="btn btn-outline btn-sm" href="request.html?open=complaint" style="margin-top:10px; display:inline-block; border-color:#c94747; color:#c94747;">File a Complaint</a>
+  </div>
+</div>
+</section>
+
+<section class="panel id-panel"><div class="panel-head"><h2>Digital Barangay ID</h2><a class="text-btn" href="digital-id.html">Open</a></div>
+
+<!-- Standard GVCID front card (no flip) -->
+<div class="gvcid-card">
+  <!-- Header -->
+  <div class="gvcid-header">
+    <div class="gvcid-header-logos">
+      <img src="../assets/makati logo.png" alt="Makati Seal" class="gvcid-seal-left" onerror="this.style.display='none'">
+      <div class="gvcid-header-text">
+        <div class="gvcid-brgy-name">BARANGAY GUADALUPE VIEJO</div>
+        <div class="gvcid-address-line">GUMAMELA CORNER CAMIA STREET, GUADALUPE VIEJO</div>
+        <div class="gvcid-address-line">CITY OF MAKATI, REPUBLIC OF THE PHILIPPINES 1211</div>
+        <div class="gvcid-address-line">TELEPHONE NOS.: 8470-0081 / 8672-0032</div>
+      </div>
+      <img src="../assets/viejo.jpg" alt="Barangay Seal" class="gvcid-seal-right" onerror="this.style.display='none'">
+    </div>
+    <div class="gvcid-card-title">CONSTITUENT'S IDENTIFICATION CARD</div>
+  </div>
+
+  <!-- Body -->
+  <div class="gvcid-body">
+    <!-- Photo column -->
+    <div class="gvcid-photo-col">
+      <div class="gvcid-photo-box" id="residentDashIdPhoto" title="Official Barangay ID Photo">
+        <span id="residentDashIdPhotoInitials" style="display:none;">ID</span>
+        <!-- Photo will be inserted by script -->
+      </div>
+      <div id="residentDashPhotoNote" class="photo-note" style="display:none; font-size:8px; color:#fbbf24; margin-top:4px;">Photo cannot be changed</div>
+    </div>
+    <!-- Fields -->
+    <div class="gvcid-fields">
+      <div class="gvcid-field-row"><span class="gvcid-label">SURNAME:</span> <span class="gvcid-value" id="gvcidSurname">-</span></div>
+      <div class="gvcid-field-row"><span class="gvcid-label">GIVEN NAME:</span> <span class="gvcid-value" id="gvcidGivenName">-</span></div>
+      <div class="gvcid-field-row"><span class="gvcid-label">MIDDLE NAME:</span> <span class="gvcid-value" id="gvcidMiddleName">-</span></div>
+      <div class="gvcid-field-row"><span class="gvcid-label">SEX:</span> <span class="gvcid-value" id="gvcidSex">-</span></div>
+      <div class="gvcid-field-row"><span class="gvcid-label">DATE OF BIRTH:</span> <span class="gvcid-value" id="gvcidDob">-</span></div>
+      <div class="gvcid-field-row"><span class="gvcid-label">CIVIL STATUS:</span> <span class="gvcid-value" id="gvcidCivilStatus">-</span></div>
+      <div class="gvcid-field-row"><span class="gvcid-label">ADDRESS:</span> <span class="gvcid-value" id="gvcidAddress">-</span></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="gvcid-footer">
+    <div class="gvcid-footer-left">
+      <div class="gvcid-footer-idlabel">Constituent's ID No.:</div>
+      <div class="gvcid-footer-idnum" id="residentDashIdNumber">-</div>
+    </div>
+    <div class="gvcid-footer-right">
+      <span class="gvcid-footer-loc">GUADALUPE VIEJO, MAKATI CITY</span>
+    </div>
+  </div>
+
+  <!-- Status bar (repurposed) -->
+  <div class="gvcid-flip-bar" style="padding-top:4px;">
+    <span id="residentDashIdStatus" class="gvcid-status">● ACTIVE / VERIFIED</span>
+  </div>
+</div>
+
+<div class="id-actions"></div></section>
+
+<section class="panel tracker-panel"><div class="panel-head"><h2>Track Latest Request</h2><a class="text-btn" href="tracker.html">Details</a></div>
+<div id="residentLatestTrackerContent">
+  <div style="text-align:center; padding:24px 16px; color:var(--muted); font-size:13px;">No active requests submitted yet.</div>
+</div></section>
+
+<section class="panel announcement-panel"><div class="panel-head"><h2>Announcements</h2><a class="text-btn" href="announcements.html">View All</a></div><div class="announcement-list-dynamic"><div style="text-align:center; padding:16px 0; color:var(--muted); font-size:12px;">Loading announcements...</div></div></section>
+
+</div>
+<div class="notice"><strong>Cash payment reminder:</strong> Approved requests requiring payment can be paid at the Barangay Hall Treasury. Keep your reference number for verification.</div>
+<footer class="app-page-footer">
+  <span>&copy; 2026 E-Viejo &bull; Barangay Guadalupe Viejo, Makati City</span>
+  <span>Republic of the Philippines &bull; Data Privacy Act (RA 10173)</span>
+</footer>
+</main>
+      </div>
+    </section>
+
+  <!-- BARANGAY ID APPLICATION & PHOTO UPLOAD MODAL -->
+  <div id="requestIdModal" class="modal hidden">
+    <div class="modal-card id-request-modal-card">
+      <button class="modal-close" id="closeIdRequestModal" type="button">&times;</button>
+      <div class="privacy-notice-badge">BARANGAY GUADALUPE VIEJO • OFFICIAL ID APPLICATION</div>
+      <h2 style="margin:4px 0 2px 0;">Request Barangay ID</h2>
+      <p class="muted" style="margin:0 0 16px 0; font-size:12px;">Fill out your resident details and attach your photo to generate your official Digital Barangay ID.</p>
+
+      <form id="idRequestForm">
+        <!-- PHOTO ATTACHMENT CONTAINER -->
+        <div class="id-upload-container">
+          <div class="id-photo-preview-box" id="idPhotoPreviewBox">
+            <img id="idPhotoPreviewImg" src="" alt="ID Photo Preview" style="display:none;">
+            <div id="idPhotoPlaceholder" class="id-photo-placeholder">
+              <span style="font-size:28px;">📷</span>
+              <small>Attach Photo<br>(Optional)</small>
+            </div>
+          </div>
+          <div class="id-upload-controls">
+            <strong>Resident ID Photo</strong>
+            <p class="muted" style="font-size:11px; margin:2px 0 8px 0;">Attach a 2x2 or portrait photo. If you don't attach an image now, it's okay — you can attach it later anytime.</p>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <label class="btn btn-outline btn-sm" style="cursor:pointer; margin:0; width:auto; display:inline-flex;">
+                <span>📁 Choose Image File</span>
+                <input type="file" id="idPhotoFileInput" accept="image/*" style="display:none;">
+              </label>
+              <button type="button" class="btn btn-ghost btn-sm" id="removeIdPhotoBtn" style="display:none;">Remove Photo</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- FORM FIELDS -->
+        <div class="form-grid" style="margin-top:14px;">
+          <label>Full Name
+            <input type="text" id="reqFullName" value="Juan Dela Cruz" required>
+          </label>
+          <label>Date of Birth
+            <input type="date" id="reqDob" value="1990-06-14" required>
+          </label>
+          <label>Gender & Civil Status
+            <select id="reqGenderCivil">
+              <option value="Male • Married" selected>Male • Married</option>
+              <option value="Male • Single">Male • Single</option>
+              <option value="Female • Married">Female • Married</option>
+              <option value="Female • Single">Female • Single</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
+          <label>Contact Mobile Number
+            <input type="tel" id="reqPhone" value="0917 123 4567" required>
+          </label>
+          <label class="span-2">Barangay Address
+            <input type="text" id="reqAddress" value="124 P. Burgos St., Brgy. Guadalupe Viejo, Makati City" required>
+          </label>
+          <label>Emergency Contact Person
+            <input type="text" id="reqEmergencyName" placeholder="e.g. Maria Dela Cruz" value="Maria Dela Cruz">
+          </label>
+          <label>Emergency Contact Number
+            <input type="tel" id="reqEmergencyPhone" placeholder="e.g. 0918 765 4321" value="0918 765 4321">
+          </label>
+        </div>
+
+        <div class="privacy-actions" style="margin-top:20px;">
+          <button type="button" class="btn btn-outline" id="cancelIdRequestModal">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="submitIdRequestBtn">Submit ID Request & Activate Digital ID</button>
+        </div>
+      </form>
+    </div>
+  </div>  <script src="../script.js"></script>
+</body>
+</html>

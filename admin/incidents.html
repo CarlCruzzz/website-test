@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="E-Viejo — Barangay Guadalupe Viejo, Makati City digital resident services portal.">
+  <title>Incident Reports | E-Viejo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/jpeg" href="../assets/viejo.jpg">
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+
+  <section class="app-screen admin-theme">
+    <!-- SIDEBAR -->
+    <aside class="sidebar admin-side">
+      <a class="brand side-brand" href="index.html">
+        <div class="side-logo">
+          <img src="../assets/viejo.jpg" alt="E-Viejo logo" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+          <span>GV</span>
+        </div>
+        <div class="side-brand-copy">
+          <strong>E-Viejo</strong>
+          <small>Admin Portal</small>
+        </div>
+        <span class="portal-pill">ADMIN</span>
+      </a>
+      <div class="side-welcome">Barangay administration</div>
+      <nav class="side-nav">
+        <a class="side-link" href="index.html"><span class="side-icon">⌂</span><span>Dashboard</span></a>
+        <a class="side-link" href="requests.html"><span class="side-icon">▣</span><span>Requests</span></a>
+        <a class="side-link" href="residents.html"><span class="side-icon">♙</span><span>Residents</span></a>
+        <a class="side-link active" href="incidents.html"><span class="side-icon">!</span><span>Incident Reports</span></a>
+        <a class="side-link" href="payments.html"><span class="side-icon">₱</span><span>Payments & Cash</span></a>
+        <a class="side-link" href="announcements.html"><span class="side-icon">◉</span><span>Announcements</span></a>
+        <a class="side-link" href="reports.html"><span class="side-icon">▥</span><span>Reports & Analytics</span></a>
+        <a class="side-link" href="users.html"><span class="side-icon">⚙</span><span>Users & Roles</span></a>
+        <a class="side-link" href="logs.html"><span class="side-icon">⌁</span><span>Audit Logs</span></a>
+      </nav>
+      <div class="side-bottom">
+        <div class="side-help">
+          <span>?</span>
+          <div>
+            <strong>Need help?</strong>
+            <small>Visit the barangay office</small>
+          </div>
+        </div>
+        <a class="logout" href="../index.html"><span class="side-icon">↪</span><span>Logout</span></a>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <div class="app-content">
+      <header class="app-topbar">
+        <div>
+          <button class="mobile-menu" id="mobileMenu" type="button">☰</button>
+          <span class="page-label">Incident Reports</span>
+        </div>
+        <div class="top-user">
+          <span></span>
+          <div class="avatar">JD</div>
+          <strong>Juan Dela Cruz</strong>
+          <span></span>
+        </div>
+      </header>
+
+      <main class="page">
+        <!-- PAGE HEADING -->
+        <div class="page-heading">
+          <div>
+            <span class="eyebrow">COMMUNITY SAFETY & PEACE AND ORDER</span>
+            <h1>Incident reports</h1>
+            <p class="muted">Monitor barangay blotters, assign responding officers, and track resolution statuses.</p>
+          </div>
+          <div>
+            <button class="btn btn-primary" id="openAddIncidentBtn" type="button">+ Log New Incident</button>
+          </div>
+        </div>
+
+
+        <!-- TABLE PANEL -->
+        <div class="panel">
+          <div class="table-toolbar">
+            <input type="search" class="search" id="incidentSearchInput" placeholder="Search ID, type, location, complainant, officer...">
+            <select id="incidentFilterStatus">
+              <option value="">All Statuses</option>
+              <option value="New">New</option>
+              <option value="Under Review">Under Review</option>
+              <option value="Investigating">Investigating</option>
+              <option value="Resolved">Resolved</option>
+              <option value="Closed">Closed</option>
+            </select>
+            <select id="incidentFilterOfficer">
+              <option value="">All Officers</option>
+              <option value="Unassigned">⚠️ Unassigned</option>
+              <option value="Officer Juan Reyes">Officer Juan Reyes</option>
+              <option value="Officer Maria Cruz">Officer Maria Cruz</option>
+              <option value="Officer Alex Santos">Officer Alex Santos</option>
+              <option value="Officer Mark Ramos">Officer Mark Ramos</option>
+              <option value="Officer Roberto Bautista">Officer Roberto Bautista</option>
+            </select>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Report ID</th>
+                  <th>Incident Type</th>
+                  <th>Location</th>
+                  <th>Reported</th>
+                  <th>Status</th>
+                  <th>Assigned Officer</th>
+                  <th style="text-align:right;">Action</th>
+                </tr>
+              </thead>
+              <tbody id="incidentsTableBody">
+                <!-- Loaded dynamically by script.js -->
+              </tbody>
+            </table>
+          </div>
+          <footer class="app-page-footer">
+            <span>&copy; 2026 E-Viejo &bull; Barangay Guadalupe Viejo, Makati City</span>
+            <span>Republic of the Philippines &bull; Data Privacy Act (RA 10173)</span>
+          </footer>
+        </div>
+      </main>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       INCIDENT DETAILS & OFFICER ASSIGNMENT POP-UP MODAL
+       ===================================================== -->
+  <div id="incidentDetailsModal" class="modal hidden">
+    <div class="modal-card incident-modal-card">
+      <button class="modal-close" id="closeIncidentModalBtn" type="button" aria-label="Close modal">&times;</button>
+      
+      <div class="privacy-notice-badge" style="background:#eaf2ff; color:#003366; border:1px solid #bfd4ef; margin-bottom:10px; display:inline-block; font-size:10px; font-weight:800; padding:4px 9px; border-radius:6px; text-transform:uppercase; letter-spacing:0.04em;">
+        BARANGAY GUADALUPE VIEJO • OFFICIAL BLOTTER REPORT
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:18px; padding-bottom:12px; border-bottom:1px solid #edf0f4;">
+        <div>
+          <h2 id="incModalTypeTitle" style="margin:0 0 4px 0; color:var(--blue); font-size:20px;">Noise Complaint</h2>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <small id="incModalId" style="font-size:12px; font-weight:700; color:#5c7694;">INC-2026-0041</small>
+            <span id="incModalStatusBadge" class="badge pending">New</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- READ-ONLY RECORD INFORMATION -->
+      <div class="resident-info-grid" style="margin-bottom:18px;">
+        <div class="info-group">
+          <small>Date & Time Reported</small>
+          <strong id="incModalDate">—</strong>
+        </div>
+        <div class="info-group">
+          <small>Incident Location</small>
+          <strong id="incModalLocation">—</strong>
+        </div>
+        <div class="info-group">
+          <small>Complainant / Reported By</small>
+          <strong id="incModalComplainant">—</strong>
+        </div>
+        <div class="info-group">
+          <small>Contact Number</small>
+          <strong id="incModalContact">—</strong>
+        </div>
+        <div class="info-group" style="grid-column: 1 / -1;">
+          <small>Initial Blotter Description</small>
+          <p id="incModalDescription" style="margin:2px 0 0 0; color:var(--ink); font-size:13px; line-height:1.5; background:#f9fbfe; padding:10px 12px; border-radius:8px; border:1px solid #e7edf6;">—</p>
+        </div>
+      </div>
+
+      <!-- UPDATE & OFFICER ASSIGNMENT FORM -->
+      <form id="incidentUpdateForm" style="border-top:1px solid #edf0f4; padding-top:16px;">
+        <input type="hidden" id="incModalTargetId">
+        
+        <h3 style="margin:0 0 12px 0; font-size:13px; color:var(--blue); text-transform:uppercase; letter-spacing:0.04em;">
+          👮 Dispatch & Officer Assignment
+        </h3>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px;">
+          <label>Responding / Assigned Officer
+            <select id="incModalOfficerSelect" required>
+              <option value="Unassigned">⚠️ Unassigned (Pending Dispatch)</option>
+              <option value="Officer Juan Reyes">Officer Juan Reyes (Traffic & Patrol)</option>
+              <option value="Officer Maria Cruz">Officer Maria Cruz (Mediation / Community)</option>
+              <option value="Officer Alex Santos">Officer Alex Santos (Peace & Order)</option>
+              <option value="Officer Mark Ramos">Officer Mark Ramos (Sanitation & Code)</option>
+              <option value="Officer Roberto Bautista">Officer Roberto Bautista (Public Safety)</option>
+            </select>
+          </label>
+
+          <label>Incident Status
+            <select id="incModalStatusSelect" required>
+              <option value="New">New</option>
+              <option value="Under Review">Under Review</option>
+              <option value="Investigating">Investigating</option>
+              <option value="Resolved">Resolved</option>
+              <option value="Closed">Closed</option>
+            </select>
+          </label>
+        </div>
+
+        <label style="margin-bottom:14px;">
+          Officer Action Taken / Resolution Notes
+          <textarea id="incModalNotesInput" placeholder="Enter officer response details, action taken on-site, mediation remarks, or resolution findings..." style="min-height:85px;"></textarea>
+        </label>
+
+        <!-- ACTIVITY AUDIT HISTORY -->
+        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:12px 14px; margin-bottom:18px;">
+          <small style="font-weight:700; color:#475569; display:block; margin-bottom:8px; text-transform:uppercase; font-size:10px; letter-spacing:0.05em;">Dispatch Timeline & Audit Log</small>
+          <div id="incModalHistoryList" style="font-size:11px; color:#5c7089; display:flex; flex-direction:column; gap:6px;">
+            <!-- Rendered by script.js -->
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:10px; border-top:1px solid #edf0f4; padding-top:16px;">
+          <button class="btn btn-outline" id="cancelIncidentModalBtn" type="button">Close</button>
+          <button class="btn btn-primary" type="submit">Save & Update Incident</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       LOG NEW INCIDENT REPORT POP-UP MODAL
+       ===================================================== -->
+  <div id="addIncidentModal" class="modal hidden">
+    <div class="modal-card incident-modal-card">
+      <button class="modal-close" id="closeAddIncidentModalBtn" type="button" aria-label="Close modal">&times;</button>
+      <div class="privacy-notice-badge" style="background:#eaf2ff; color:#003366; border:1px solid #bfd4ef; margin-bottom:8px; display:inline-block; font-size:10px; font-weight:800; padding:4px 9px; border-radius:6px; text-transform:uppercase; letter-spacing:0.04em;">
+        BARANGAY GUADALUPE VIEJO • NEW INCIDENT INTAKE
+      </div>
+      <h2 style="margin:0 0 4px 0; color:var(--blue); font-size:20px;">Log New Incident Report</h2>
+      <p class="muted" style="margin:0 0 16px 0; font-size:12px;">File an official community blotter or resident complaint into the barangay records.</p>
+
+      <form id="addIncidentForm">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px;">
+          <label>Incident Type
+            <select id="newIncType" required>
+              <option value="Noise Complaint">Noise Complaint</option>
+              <option value="Traffic Violation & Obstruction">Traffic Violation & Obstruction</option>
+              <option value="Illegal Parking">Illegal Parking</option>
+              <option value="Neighborhood Dispute">Neighborhood Dispute</option>
+              <option value="Waste Disposal Non-Compliance">Waste Disposal Non-Compliance</option>
+              <option value="Streetlight Outage & Hazard">Streetlight Outage & Hazard</option>
+              <option value="Public Disturbance">Public Disturbance</option>
+              <option value="Other Community Incident">Other Community Incident</option>
+            </select>
+          </label>
+
+          <label>Location in Barangay
+            <input type="text" id="newIncLocation" placeholder="e.g. 124 P. Burgos St." required>
+          </label>
+
+          <label>Complainant / Reporter Name
+            <input type="text" id="newIncComplainant" placeholder="e.g. Maria Santos" required>
+          </label>
+
+          <label>Contact Mobile Number
+            <input type="tel" id="newIncContact" placeholder="e.g. 0917 123 4567" required>
+          </label>
+
+          <label>Assign Officer (Optional)
+            <select id="newIncOfficer">
+              <option value="Unassigned">⚠️ Leave Unassigned</option>
+              <option value="Officer Juan Reyes">Officer Juan Reyes (Traffic & Patrol)</option>
+              <option value="Officer Maria Cruz">Officer Maria Cruz (Mediation / Community)</option>
+              <option value="Officer Alex Santos">Officer Alex Santos (Peace & Order)</option>
+              <option value="Officer Mark Ramos">Officer Mark Ramos (Sanitation & Code)</option>
+              <option value="Officer Roberto Bautista">Officer Roberto Bautista (Public Safety)</option>
+            </select>
+          </label>
+
+          <label>Initial Status
+            <select id="newIncStatus">
+              <option value="New">New</option>
+              <option value="Under Review">Under Review</option>
+              <option value="Investigating">Investigating</option>
+            </select>
+          </label>
+        </div>
+
+        <label style="margin-bottom:14px;">
+          Incident Details & Observations
+          <textarea id="newIncDetails" placeholder="Provide full details of what occurred, parties involved, and any immediate hazards..." required style="min-height:85px;"></textarea>
+        </label>
+
+        <div style="display:flex; justify-content:flex-end; gap:10px; border-top:1px solid #edf0f4; padding-top:16px;">
+          <button class="btn btn-outline" id="cancelAddIncidentBtn" type="button">Cancel</button>
+          <button class="btn btn-primary" type="submit">Submit Incident Report</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+</html>

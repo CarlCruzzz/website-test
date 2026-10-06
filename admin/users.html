@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="E-Viejo — Barangay Guadalupe Viejo, Makati City digital resident services portal.">
+  <title>Users & Roles | E-Viejo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/jpeg" href="../assets/viejo.jpg">
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+  <section class="app-screen admin-theme">
+    <aside class="sidebar admin-side">
+      <a class="brand side-brand" href="index.html">
+        <div class="side-logo"><img src="../assets/viejo.jpg" alt="E-Viejo logo" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span>GV</span></div>
+        <div class="side-brand-copy"><strong>E-Viejo</strong><small>Admin Portal</small></div><span class="portal-pill">ADMIN</span>
+      </a>
+      <div class="side-welcome">Barangay administration</div>
+      <nav class="side-nav">
+        <a class="side-link" href="index.html"><span class="side-icon">⌂</span><span>Dashboard</span></a>
+        <a class="side-link" href="requests.html"><span class="side-icon">▣</span><span>Requests</span></a>
+        <a class="side-link" href="residents.html"><span class="side-icon">♙</span><span>Residents</span></a>
+        <a class="side-link" href="incidents.html"><span class="side-icon">!</span><span>Incident Reports</span></a>
+        <a class="side-link" href="payments.html"><span class="side-icon">₱</span><span>Payments & Cash</span></a>
+        <a class="side-link" href="announcements.html"><span class="side-icon">◉</span><span>Announcements</span></a>
+        <a class="side-link" href="reports.html"><span class="side-icon">▥</span><span>Reports & Analytics</span></a>
+        <a class="side-link active" href="users.html"><span class="side-icon">⚙</span><span>Users & Roles</span></a>
+        <a class="side-link" href="logs.html"><span class="side-icon">⌁</span><span>Audit Logs</span></a>
+      </nav>
+      <div class="side-bottom">
+        <div class="side-help"><span>?</span><div><strong>Need help?</strong><small>Visit the barangay office</small></div></div>
+        <a class="logout" href="../index.html"><span class="side-icon">↪</span><span>Logout</span></a>
+      </div>
+    </aside>
+
+    <div class="app-content">
+      <header class="app-topbar">
+        <div>
+          <button class="mobile-menu" id="mobileMenu">☰</button>
+          <span class="page-label">Users & Roles</span>
+        </div>
+        <div class="top-user" id="adminTopUser">
+          <span></span>
+          <div class="avatar" id="adminTopAvatar">AD</div>
+          <strong id="adminTopName">Admin User</strong>
+          <span id="adminTopRole" style="font-size:11px; color:#64748b; font-weight:600;">(Super Admin)</span>
+        </div>
+      </header>
+
+      <main class="page">
+        <!-- AUTHORITY STATUS BANNER -->
+        <div id="authorityBanner" class="authority-banner authorized">
+          <div class="authority-banner-content">
+            <div class="authority-banner-icon" id="authorityIcon">🛡️</div>
+            <div>
+              <h4 id="authorityTitle">Authorized Personnel Access</h4>
+              <p id="authorityDesc">You have full administrative authority to create, update, and manage staff accounts.</p>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <span class="authority-badge-pill captain" id="authorityPill">Barangay Captain</span>
+          </div>
+        </div>
+
+        <div class="page-heading">
+          <div>
+            <span class="eyebrow">ACCESS CONTROL & GOVERNANCE</span>
+            <h1>Staff accounts & roles</h1>
+            <p class="muted">Barangay official credentials, role definitions, and access permissions compliant with RA 10173.</p>
+          </div>
+          <div>
+            <button class="btn btn-primary" id="openAddAdminBtn" type="button">
+              <span>+</span> Add New Admin
+            </button>
+          </div>
+        </div>
+
+        <!-- USERS TABLE PANEL -->
+        <div class="panel">
+          <div class="table-toolbar">
+            <input type="search" class="search" id="adminSearchInput" placeholder="Search staff name, username, or role...">
+            <select id="adminRoleFilter">
+              <option value="">All Roles</option>
+              <option value="Barangay Captain">Barangay Captain</option>
+              <option value="Super Admin">Super Admin</option>
+              <option value="Barangay Secretary">Barangay Secretary</option>
+              <option value="Incident Officer">Incident Officer</option>
+              <option value="Desk Officer">Desk Officer</option>
+              <option value="Treasury Staff">Treasury Staff</option>
+            </select>
+            <select id="adminStatusFilter">
+              <option value="">All Statuses</option>
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+            </select>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>User & Full Name</th>
+                  <th>Username</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                  <th>Last Login</th>
+                  <th style="text-align:right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminsTableBody">
+                <!-- Populated dynamically by script.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </section>
+
+  <!-- ADD ADMIN MODAL -->
+  <div id="addAdminModal" class="modal hidden">
+    <div class="modal-card admin-modal-card">
+      <button class="modal-close" id="closeAddAdminModalBtn" type="button">&times;</button>
+      <div class="privacy-notice-badge" style="background:#eaf2ff; color:#003366; border:1px solid #bfd4ef;">
+        AUTHORITY VERIFIED • EXECUTIVE PRIVILEGE
+      </div>
+      <h2 style="margin:4px 0 2px 0;">Create New Admin Account</h2>
+      <p class="muted" style="margin:0 0 16px 0; font-size:12px;">Only the Barangay Captain and Super Admin can provision official staff accounts.</p>
+
+      <form id="addAdminForm">
+        <div class="admin-form-grid">
+          <label style="grid-column: 1 / -1;">Full Name & Title
+            <input type="text" id="newAdminName" placeholder="e.g. Hon. Pedro Dela Rosa / Officer Mark Santos" required>
+          </label>
+          <label>Admin Username
+            <input type="text" id="newAdminUsername" placeholder="e.g. psantos" required autocomplete="off">
+          </label>
+          <label>Assigned Role
+            <select id="newAdminRole" required>
+              <option value="Barangay Secretary">Barangay Secretary</option>
+              <option value="Incident Officer">Incident Officer</option>
+              <option value="Desk Officer">Desk Officer</option>
+              <option value="Treasury Staff">Treasury Staff</option>
+              <option value="Super Admin">Super Admin</option>
+              <option value="Barangay Captain">Barangay Captain</option>
+            </select>
+          </label>
+          <label>Account Status
+            <select id="newAdminStatus">
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+            </select>
+          </label>
+          <label>Contact Phone (Optional)
+            <input type="text" id="newAdminPhone" placeholder="0917-000-0000">
+          </label>
+          <label>Initial Password
+            <input type="password" id="newAdminPass" placeholder="Enter password" required>
+          </label>
+          <label>Confirm Password
+            <input type="password" id="newAdminPassConfirm" placeholder="Re-enter password" required>
+          </label>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:10px; border-top:1px solid #edf0f4; padding-top:16px;">
+          <button class="btn btn-outline" id="cancelAddAdminBtn" type="button">Cancel</button>
+          <button class="btn btn-primary" type="submit">Create Admin Account</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- EDIT ADMIN MODAL -->
+  <div id="editAdminModal" class="modal hidden">
+    <div class="modal-card admin-modal-card">
+      <button class="modal-close" id="closeEditAdminModalBtn" type="button">&times;</button>
+      <div class="privacy-notice-badge" style="background:#eaf2ff; color:#003366; border:1px solid #bfd4ef;">
+        OFFICIAL PERSONNEL RECORD MODIFICATION
+      </div>
+      <h2 style="margin:4px 0 2px 0;">Edit Admin Account Details</h2>
+      <p class="muted" style="margin:0 0 16px 0; font-size:12px;">Modify credentials and responsibilities for <strong id="editAdminTargetNameDisplay">Staff</strong>.</p>
+
+      <form id="editAdminForm">
+        <input type="hidden" id="editAdminId">
+        <div class="admin-form-grid">
+          <label style="grid-column: 1 / -1;">Full Name & Title
+            <input type="text" id="editAdminName" required>
+          </label>
+          <label>Admin Username
+            <input type="text" id="editAdminUsername" required autocomplete="off">
+          </label>
+          <label>Assigned Role
+            <select id="editAdminRole" required>
+              <option value="Barangay Captain">Barangay Captain</option>
+              <option value="Super Admin">Super Admin</option>
+              <option value="Barangay Secretary">Barangay Secretary</option>
+              <option value="Incident Officer">Incident Officer</option>
+              <option value="Desk Officer">Desk Officer</option>
+              <option value="Treasury Staff">Treasury Staff</option>
+            </select>
+          </label>
+          <label>Account Status
+            <select id="editAdminStatus">
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+            </select>
+          </label>
+          <label>Contact Phone
+            <input type="text" id="editAdminPhone">
+          </label>
+          <label style="grid-column: 1 / -1;">New Password (Optional)
+            <input type="password" id="editAdminPass" placeholder="Leave blank to keep existing password">
+          </label>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:10px; border-top:1px solid #edf0f4; padding-top:16px;">
+          <button class="btn btn-outline" id="cancelEditAdminBtn" type="button">Cancel</button>
+          <button class="btn btn-primary" type="submit">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- DELETE CONFIRMATION MODAL -->
+  <div id="deleteAdminModal" class="modal hidden">
+    <div class="modal-card" style="width:min(480px, 95vw); padding:24px;">
+      <button class="modal-close" id="closeDeleteAdminModalBtn" type="button">&times;</button>
+      <div style="font-size:32px; margin-bottom:8px;">⚠️</div>
+      <h2 style="color:#b91c1c; margin:0 0 6px 0; font-size:18px;">Confirm Admin Deletion</h2>
+      <p class="muted" style="margin:0 0 16px 0; font-size:13px; line-height:1.5;">
+        Are you sure you want to delete the admin account for <strong id="deleteAdminNameDisplay" style="color:#0f172a;">Staff</strong> (<span id="deleteAdminRoleDisplay">Role</span>)? This action is permanent and will be recorded in the audit logs.
+      </p>
+      
+      <input type="hidden" id="deleteAdminId">
+      
+      <div style="display:flex; justify-content:flex-end; gap:10px; border-top:1px solid #edf0f4; padding-top:14px;">
+        <button class="btn btn-outline" id="cancelDeleteAdminBtn" type="button">Cancel</button>
+        <button class="btn" id="confirmDeleteAdminBtn" type="button" style="background:#dc2626; color:#fff; border-color:#dc2626;">Delete Account</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+</html>

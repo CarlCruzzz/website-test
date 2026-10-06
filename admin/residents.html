@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="E-Viejo — Barangay Guadalupe Viejo, Makati City digital resident services portal.">
+  <title>Resident Management | E-Viejo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/jpeg" href="../assets/viejo.jpg">
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+<section class="app-screen admin-theme">
+      <aside class="sidebar admin-side">
+      <a class="brand side-brand" href="index.html">
+        <div class="side-logo"><img src="../assets/viejo.jpg" alt="E-Viejo logo" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span>GV</span></div>
+        <div class="side-brand-copy"><strong>E-Viejo</strong><small>Admin Portal</small></div><span class="portal-pill">ADMIN</span>
+      </a>
+      <div class="side-welcome">Barangay administration</div>
+      <nav class="side-nav"><a class="side-link" href="index.html"><span class="side-icon">⌂</span><span>Dashboard</span></a><a class="side-link" href="requests.html"><span class="side-icon">▣</span><span>Requests</span></a><a class="side-link active" href="residents.html"><span class="side-icon">♙</span><span>Residents</span></a><a class="side-link" href="incidents.html"><span class="side-icon">!</span><span>Incident Reports</span></a><a class="side-link" href="payments.html"><span class="side-icon">₱</span><span>Payments & Cash</span></a><a class="side-link" href="announcements.html"><span class="side-icon">◉</span><span>Announcements</span></a><a class="side-link" href="reports.html"><span class="side-icon">▥</span><span>Reports & Analytics</span></a><a class="side-link" href="users.html"><span class="side-icon">⚙</span><span>Users & Roles</span></a><a class="side-link" href="logs.html"><span class="side-icon">⌁</span><span>Audit Logs</span></a></nav>
+      <div class="side-bottom">
+        <div class="side-help"><span>?</span><div><strong>Need help?</strong><small>Visit the barangay office</small></div></div>
+        <a class="logout" href="../index.html"><span class="side-icon">↪</span><span>Logout</span></a>
+      </div>
+    </aside>
+      <div class="app-content">
+        <header class="app-topbar">
+      <div><button class="mobile-menu" id="mobileMenu">☰</button><span class="page-label">Resident Management</span></div>
+      <div class="top-user"><span></span><div class="avatar">JD</div><strong>Juan Dela Cruz</strong><span></span></div>
+    </header>
+        <main class="page">
+<div class="page-heading"><div><span class="eyebrow">RESIDENT DATABASE</span><h1>Residents</h1></div></div>
+<div class="panel"><div class="table-toolbar"><input class="search" id="residentSearchInput" placeholder="Search resident..."><button class="btn btn-primary" type="button" id="openAddResidentBtn">+ Add Resident</button></div><div class="table-wrap"><table><thead><tr><th>Resident</th><th>Barangay ID</th><th>Address</th><th>Account</th><th>ID Status</th><th>Action</th></tr></thead><tbody id="residentsTableBody">
+<!-- Populated dynamically from database -->
+</tbody></table></div></div>
+<footer class="app-page-footer">
+  <span>&copy; 2026 E-Viejo &bull; Barangay Guadalupe Viejo, Makati City</span>
+  <span>Republic of the Philippines &bull; Data Privacy Act (RA 10173)</span>
+</footer>
+</main>
+      </div>
+    </section>
+
+  <!-- RESIDENT FULL PROFILE MODAL POPUP -->
+  <div id="residentInfoModal" class="modal hidden">
+    <div class="modal-card resident-modal-card">
+      <button class="modal-close" id="closeResidentInfoModal" type="button">&times;</button>
+      <div class="resident-profile-header">
+        <div class="avatar avatar-lg" id="modalResAvatarContainer">
+          <img id="modalResPhoto" src="" alt="Resident Photo" style="display:none;" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='grid';">
+          <span id="modalResInitials" class="avatar-initials">JD</span>
+        </div>
+        <div>
+          <h2 id="modalResName" style="margin:0 0 2px 0;">Juan Dela Cruz</h2>
+          <small class="muted" id="modalResId" style="font-size:12px; font-weight:600; color:#5c7694;">GV-2026-000123</small>
+          <div class="badge-row">
+            <span class="badge completed" id="modalResAccount">Verified Resident</span>
+            <span class="badge approved" id="modalResIdStatus">Active Barangay ID</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="resident-info-grid">
+        <div class="info-group">
+          <small>Full Name</small>
+          <strong id="modalResFullName">Juan Dela Cruz</strong>
+        </div>
+        <div class="info-group">
+          <small>Date of Birth</small>
+          <strong id="modalResDob">June 14, 1990 (36 yrs old)</strong>
+        </div>
+        <div class="info-group">
+          <small>Gender & Civil Status</small>
+          <strong id="modalResGender">Male • Married</strong>
+        </div>
+        <div class="info-group">
+          <small>Contact Number</small>
+          <strong id="modalResPhone">+63 917 123 4567</strong>
+        </div>
+        <div class="info-group">
+          <small>Email Address</small>
+          <strong id="modalResEmail">juan.delacruz@email.com</strong>
+        </div>
+        <div class="info-group">
+          <small>Barangay Address</small>
+          <strong id="modalResAddress">124 P. Burgos St., Brgy. Guadalupe Viejo, Makati City</strong>
+        </div>
+        <div class="info-group">
+          <small>Voter Registration</small>
+          <strong id="modalResVoter">Registered Voter (Precinct 0412A)</strong>
+        </div>
+        <div class="info-group">
+          <small>Resident Record</small>
+          <strong id="modalResSince">2015 (11 years resident)</strong>
+        </div>
+      </div>
+
+      <div class="resident-modal-actions">
+        <button class="btn btn-outline" type="button" onclick="window.print()">Print Record</button>
+        <button class="btn btn-primary" id="openAdminEditFlowBtn" type="button">Verify / Update Information</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN SENSITIVE DATA EDIT TERMS MODAL -->
+  <div id="adminTermsEditModal" class="modal hidden">
+    <div class="modal-card privacy-modal-card">
+      <button class="modal-close" id="closeAdminTermsModal" type="button">&times;</button>
+      <div class="privacy-notice-badge" style="background:#fffbe6; color:#873800; border: 1px solid #ffe58f;">⚠️ ADMIN DATA PRIVACY & AUDIT WARNING</div>
+      <h2 style="margin:6px 0 4px 0;">Sensitive Resident Data Authorization</h2>
+      <p class="muted" style="margin:0 0 14px 0; font-size:12px;">Barangay Guadalupe Viejo — Administrative Records Management</p>
+      
+      <div class="warning-callout">
+        <strong>Important Notice (RA 10173 Compliance):</strong> You are about to access and modify confidential personal resident records. Under Republic Act No. 10173, all updates to sensitive personal data must be authorized, accurate, and performed strictly for official barangay administration. Every edit action is logged in the official Barangay Audit System.
+      </div>
+
+      <div class="privacy-text-box" style="max-height:150px;">
+        <h4>Barangay Staff Authorization Terms:</h4>
+        <ul>
+          <li>I certify that I am an authorized Barangay Official/Staff member updating this resident profile for legitimate barangay purposes.</li>
+          <li>I agree that unauthorized modification, disclosure, or misuse of resident records is punishable under the Philippine Data Privacy Act of 2012.</li>
+          <li>I acknowledge that my admin username, timestamp, and edited fields will be recorded in the system audit log.</li>
+        </ul>
+      </div>
+
+      <label class="privacy-checkbox-row">
+        <input type="checkbox" id="adminAgreeEditCheckbox">
+        <span>I certify that I am authorized to update this resident record and agree to the <strong>Data Privacy Audit Terms</strong>.</span>
+      </label>
+
+      <div style="display:flex; justify-flex:flex-end; gap:10px;">
+        <button class="btn btn-outline" id="cancelAdminTermsBtn" type="button">Cancel</button>
+        <button class="btn btn-primary" id="proceedToEditBtn" type="button" disabled>Proceed to Edit Record</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDIT RESIDENT INFORMATION FORM MODAL -->
+  <div id="editResidentModal" class="modal hidden">
+    <div class="modal-card resident-modal-card">
+      <button class="modal-close" id="closeEditResidentModal" type="button">&times;</button>
+      <h2 style="margin:0 0 4px 0;">Edit Resident Profile</h2>
+      <p class="muted" style="margin:0 0 18px 0; font-size:12px;">Update official information for <strong id="editResTitleName">Juan Dela Cruz</strong> (<span id="editResTitleId">GV-2026-000123</span>)</p>
+
+      <form id="editResidentForm">
+        <input type="hidden" id="editResTargetId">
+        <div class="edit-form-grid">
+          <label>Full Name
+            <input type="text" id="inputEditName" required>
+          </label>
+          <label>Date of Birth
+            <input type="text" id="inputEditDob" required>
+          </label>
+          <label>Gender & Civil Status
+            <input type="text" id="inputEditGender" required>
+          </label>
+          <label>Contact Phone
+            <input type="text" id="inputEditPhone" required>
+          </label>
+          <label>Email Address
+            <input type="email" id="inputEditEmail" required>
+          </label>
+          <label>Voter Precinct
+            <input type="text" id="inputEditVoter" required>
+          </label>
+          <label style="grid-column: 1 / -1;">Barangay Address
+            <input type="text" id="inputEditAddress" required>
+          </label>
+          <label>Account Status
+            <select id="inputEditAccount">
+              <option value="Verified Resident">Verified Resident</option>
+              <option value="Pending Verification">Pending Verification</option>
+            </select>
+          </label>
+          <label>Barangay ID Status
+            <select id="inputEditIdStatus">
+              <option value="Active Barangay ID">Active Barangay ID</option>
+              <option value="For Renewal">For Renewal</option>
+              <option value="Suspended">Suspended</option>
+            </select>
+          </label>
+        </div>
+
+        <div style="display:flex; justify-flex:flex-end; gap:10px; margin-top:16px; padding-top:14px; border-top:1px solid #edf0f4;">
+          <button class="btn btn-outline" id="cancelEditFormBtn" type="button">Cancel</button>
+          <button class="btn btn-primary" type="submit">Save Changes & Log Audit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ADD RESIDENT MODAL -->
+  <div id="addResidentModal" class="modal hidden">
+    <div class="modal-card resident-modal-card">
+      <button class="modal-close" id="closeAddResidentModal" type="button">&times;</button>
+      <h2 style="margin:0 0 4px 0;">Add Resident to Database</h2>
+      <p class="muted" style="margin:0 0 18px 0; font-size:12px;">Enroll an official resident into the Barangay Guadalupe Viejo records under RA 10173.</p>
+
+      <form id="addResidentForm">
+        <div class="edit-form-grid">
+          <label>Full Name
+            <input type="text" id="addResName" placeholder="e.g. Maria Santos" required>
+          </label>
+          <label>Date of Birth
+            <input type="date" id="addResDob" required>
+          </label>
+          <label>Gender
+            <select id="addResGender" required>
+              <option value="Female">Female</option>
+              <option value="Male">Male</option>
+            </select>
+          </label>
+          <label>Civil Status
+            <select id="addResCivil">
+              <option value="Single">Single</option>
+              <option value="Married">Married</option>
+              <option value="Widowed">Widowed</option>
+              <option value="Separated">Separated</option>
+            </select>
+          </label>
+          <label>Contact Phone
+            <input type="text" id="addResPhone" placeholder="09XX XXX XXXX" required>
+          </label>
+          <label>Email Address
+            <input type="email" id="addResEmail" placeholder="resident@email.com" required>
+          </label>
+          <label style="grid-column: 1 / -1;">Barangay Address
+            <input type="text" id="addResAddress" placeholder="e.g. 124 P. Burgos St., Guadalupe Viejo, Makati City" required>
+          </label>
+        </div>
+
+        <div style="display:flex; justify-flex:flex-end; gap:10px; margin-top:16px; padding-top:14px; border-top:1px solid #edf0f4;">
+          <button class="btn btn-outline" id="cancelAddResidentBtn" type="button">Cancel</button>
+          <button class="btn btn-primary" type="submit">Save Resident to Database</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Admin Login | E-Viejo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/jpeg" href="../assets/viejo.jpg">
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+  <main class="auth-page">
+    <section class="auth-card">
+      <div class="auth-brand">
+        <div class="side-logo auth-logo">
+          <img src="../assets/viejo.jpg" alt="E-Viejo logo" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+          <span>GV</span>
+        </div>
+        <div>
+          <strong>E-Viejo</strong>
+          <small>Barangay Guadalupe Viejo, Makati</small>
+        </div>
+      </div>
+      
+      <div class="auth-copy">
+        <span class="eyebrow">BARANGAY ADMINISTRATION</span>
+        <h1>Admin Portal Login</h1>
+        <p class="muted">Authorized barangay staff only. Sign in to manage resident requests, incident reports, payments, and staff roles.</p>
+      </div>
+
+      <form id="adminLoginForm" class="panel auth-form">
+        <label>Admin Username
+          <input id="adminUser" required placeholder="Enter admin username" autocomplete="username">
+        </label>
+        <label>Password
+          <input id="adminPass" type="password" required placeholder="Enter password" autocomplete="current-password">
+        </label>
+        
+        <button class="btn btn-primary full" type="submit">Sign In to Admin Portal</button>
+      </form>
+
+      <div class="auth-footer">
+        <a href="login.html">← Resident Login</a>
+      </div>
+    </section>
+  </main>
+  <script src="../script.js"></script>
+</body>
+</html>

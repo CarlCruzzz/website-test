@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="E-Viejo — Barangay Guadalupe Viejo, Makati City digital resident services portal.">
+  <title>Register | E-Viejo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/jpeg" href="../assets/viejo.jpg">
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+
+<section class="auth-screen">
+<div class="auth-wrap wide-auth">
+<a class="back-link" href="../index.html">← Back to E-Viejo</a>
+<div class="auth-card">
+<div class="auth-brand"><div class="side-logo auth-logo"><img src="../assets/viejo.jpg" alt="E-Viejo logo" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span>GV</span></div><strong>E-Viejo</strong><small>Create Resident Account</small></div>
+<div id="registerStart"><h1>Create your account</h1><p class="muted">Choose how you would like to register your E-Viejo resident account:</p>
+<div class="register-options">
+<button class="option-card" id="useScan" type="button"><strong>Scan Physical ID</strong><small>Already have a physical Barangay ID? Scan it to auto-fill your details into editable inputs.</small><b>Scan Card →</b></button>
+<button class="option-card" id="useManual" type="button"><strong>Register Without ID</strong><small>New resident or no Barangay ID yet? Fill out the registration form to create your account.</small><b>Fill Details →</b></button>
+</div></div>
+
+<!-- SCANNER STEP -->
+<div id="registerScan" class="hidden">
+  <div class="stepper"><span class="active">1</span><i></i><span>2</span><i></i><span>3</span></div>
+  <h1>Scan Physical Barangay ID</h1>
+  <p class="muted">Position your physical Barangay ID card inside the camera frame. Scan the <strong>Front side</strong> first, then flip your card to scan the <strong>Back side</strong>.</p>
+  
+  <!-- SCANNER STEP PILLS (TEXT-BASED) -->
+  <div class="scanner-step-pills">
+    <div class="step-pill active" id="scanPillFront">
+      <span class="step-num">1</span>
+      <span class="step-label">Front of ID</span>
+      <span class="step-status" id="frontPillStatus">Ready</span>
+    </div>
+    <div class="step-arrow">→</div>
+    <div class="step-pill" id="scanPillBack">
+      <span class="step-num">2</span>
+      <span class="step-label">Back of ID</span>
+      <span class="step-status" id="backPillStatus">Pending</span>
+    </div>
+  </div>
+
+  <div class="card-scanner-frame" style="height:210px; margin: 12px auto 14px auto; position:relative; overflow:hidden;">
+    <video id="registerScannerVideo" class="scanner-live-video" autoplay playsinline muted></video>
+    <img id="registerUploadedPreview" class="scanner-uploaded-preview hidden" alt="Uploaded ID Preview" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:contain; background:#0f172a; z-index:2;">
+    
+    <!-- 3D FLIP CARD NOTIFICATION OVERLAY (TEXT-BASED) -->
+    <div id="scannerFlipOverlay" class="scanner-flip-overlay hidden">
+      <div class="flip-animation-wrap">
+        <div class="flip-card-3d" id="flipCardElement">
+          <!-- FRONT FACE -->
+          <div class="flip-face flip-face-front">
+            <div class="flip-card-badge">FRONT SIDE</div>
+            <div class="flip-card-text">
+              <strong>BARANGAY GUADALUPE VIEJO</strong>
+              <small>CONSTITUENT ID CARD</small>
+            </div>
+            <div class="flip-card-photo"><span style="font-size:8px; font-weight:700; opacity:0.85;">PHOTO</span></div>
+          </div>
+          <!-- BACK FACE -->
+          <div class="flip-face flip-face-back">
+            <div class="flip-card-badge">BACK SIDE</div>
+            <div class="flip-card-text">
+              <strong>EMERGENCY CONTACT</strong>
+              <small>PERSON &amp; PHONE NO.</small>
+            </div>
+            <div class="flip-card-strip"></div>
+          </div>
+        </div>
+      </div>
+      <div class="flip-prompt-box">
+        <div class="flip-prompt-title">FLIP CARD TO BACK SIDE</div>
+        <div class="flip-prompt-subtitle">Front side captured. Turn your physical card over to capture the emergency contact information.</div>
+        <button type="button" class="btn-flip-ready" id="scannerFlipReadyBtn">I've Flipped Card • Continue to Back →</button>
+      </div>
+    </div>
+
+    <div class="scanner-video-overlay" style="z-index:3;">
+      <div class="card-scanner-corner tl"></div>
+      <div class="card-scanner-corner tr"></div>
+      <div class="card-scanner-corner bl"></div>
+      <div class="card-scanner-corner br"></div>
+      <div class="card-scanner-laser"></div>
+      <div class="scanner-guide-box">
+        <div class="scanner-guide-text" id="registerScannerGuideText">Align FRONT of Physical ID within frame</div>
+      </div>
+    </div>
+
+    <div class="scanner-camera-fallback">
+      <div class="card-scanner-header">
+        <img src="../assets/viejo.jpg" alt="Seal" class="card-scanner-logo">
+        <div class="card-scanner-header-text">Barangay Guadalupe Viejo • Constituent ID Card</div>
+      </div>
+      <div class="card-scanner-body">
+        <div class="fallback-photo-box">
+          <span class="fallback-photo-tag">ID PHOTO</span>
+        </div>
+        <div class="card-scanner-details">
+          <span class="card-scanner-badge" id="fallbackCardSideBadge">FRONT SIDE</span>
+          <div style="font-size:10px; font-weight:700; color:#1e293b; margin:2px 0;" id="fallbackCardTitle">SURNAME, GIVEN NAME, M.I.</div>
+          <div class="card-scanner-line mid"></div>
+          <div style="font-size:9px; color:#64748b; margin-top:4px;" id="fallbackCardSub">ADDRESS &amp; BIRTHDATE</div>
+          <div class="card-scanner-line"></div>
+          <div class="card-scanner-line short"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAPTURED THUMBNAILS SUMMARY (TEXT-BASED) -->
+  <div class="scanner-thumbnails-bar" id="scannerThumbnailsBar">
+    <div class="thumb-slot active" id="thumbSlotFront">
+      <div class="thumb-preview" id="thumbPreviewFront">
+        <span class="thumb-placeholder" id="thumbTextFront">Front Preview</span>
+        <img id="thumbImgFront" class="hidden" alt="Front Preview">
+      </div>
+      <span class="thumb-label" id="thumbLabelFront">Step 1: Front</span>
+    </div>
+    <div class="thumb-slot" id="thumbSlotBack">
+      <div class="thumb-preview" id="thumbPreviewBack">
+        <span class="thumb-placeholder" id="thumbTextBack">Back Preview</span>
+        <img id="thumbImgBack" class="hidden" alt="Back Preview">
+      </div>
+      <span class="thumb-label" id="thumbLabelBack">Step 2: Back</span>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-bottom:12px;">
+    <small class="muted" style="display:inline-flex; align-items:center; gap:6px;">
+      <span style="display:inline-block; width:8px; height:8px; background:#10b981; border-radius:50%;"></span>
+      <span id="scannerStatusIndicatorText">Camera Active • Position Front Side</span>
+    </small>
+  </div>
+
+  <!-- PRIMARY SCAN / CAPTURE BUTTONS (TEXT-BASED) -->
+  <button class="btn btn-primary full" id="simulateRegisterScan" type="button">Scan Front ID</button>
+  <button class="btn btn-secondary full hidden" id="registerSkipBackBtn" type="button" style="margin-top:6px;">Proceed with Front Only →</button>
+  <button class="btn btn-ghost full hidden" id="registerRetakeFrontBtn" type="button" style="margin-top:4px;">Retake Front ID</button>
+  
+  <!-- DIRECT FRONT AND BACK UPLOAD SECTION (ALWAYS VISIBLE) -->
+  <div class="scanner-upload-section">
+    <div class="scanner-upload-divider"><span>OR UPLOAD ID PHOTOS FROM DEVICE</span></div>
+    <div class="scanner-upload-grid">
+      <div class="scanner-upload-box">
+        <label for="registerUploadFront" class="scanner-upload-label">
+          <span>Front of ID</span>
+          <span class="scanner-upload-tag">Step 1</span>
+        </label>
+        <input type="file" accept="image/*" id="registerUploadFront" class="scanner-file-input">
+        <small class="scanner-upload-hint">Upload front photo of your Barangay ID</small>
+      </div>
+      <div class="scanner-upload-box">
+        <label for="registerUploadBack" class="scanner-upload-label">
+          <span>Back of ID</span>
+          <span class="scanner-upload-tag">Step 2</span>
+        </label>
+        <input type="file" accept="image/*" id="registerUploadBack" class="scanner-file-input">
+        <small class="scanner-upload-hint">Upload back photo (Emergency Contact)</small>
+      </div>
+    </div>
+    <div style="margin-top:10px; display:flex; gap:8px;">
+      <button class="btn btn-primary full" id="uploadProcessBtn" type="button">Process Uploaded ID Details →</button>
+      <button class="btn btn-ghost" id="registerClearUploadsBtn" type="button" style="white-space:nowrap; padding:0 12px; font-size:12px;">Clear</button>
+    </div>
+  </div>
+
+  <button class="sample-id-guide-btn" type="button" id="btnViewSampleIdRegister">
+    <span>View Official Sample Barangay ID (Front &amp; Back)</span>
+  </button>
+
+  <button class="btn btn-ghost full" id="backRegisterStart" type="button" style="margin-top:8px;">← Choose another method</button>
+</div>
+
+<!-- AUTO-GENERATED SCANNED FORM (EDITABLE INPUTS + CREATE PASSWORD) -->
+<form id="scannedRegisterForm" class="hidden">
+  <div class="verified">
+    <span>✓</span>
+    <div style="flex:1;">
+      <strong>Barangay ID Scanned Successfully</strong>
+      <small>Extracted from ID: <strong id="scannedResidentBadgeName">Barangay ID Card</strong>. Inputs were auto-filled below. You can edit any details if needed, then set your password.</small>
+    </div>
+  </div>
+  <div class="stepper"><span class="done">✓</span><i class="done-line"></i><span class="active">2</span><i></i><span>3</span></div>
+  
+  <h2>Review &amp; Edit Scanned Details</h2>
+  <p class="muted" style="margin-top:-6px; font-size:13px;">Check the information generated from your ID card. You can edit any fields below before creating your password.</p>
+
+  <div class="scanned-missing-alert" id="scannedEmailNotice">
+    <div>
+      <strong>Email Address Required:</strong> Your physical Barangay ID card does not show an email address. Please enter your email address below to receive portal notices and set up your account.
+    </div>
+  </div>
+
+  <div class="form-grid">
+    <label>
+      <span>Barangay ID No. <small class="id-field-badge">Auto-filled • Editable</small></span>
+      <input id="scannedIdNumber" name="idNumber" required placeholder="e.g. GVCID-2026-01-0001">
+    </label>
+    <label>
+      <span>First Name <small class="id-field-badge">Auto-filled • Editable</small></span>
+      <input id="scannedFirstName" name="firstName" required placeholder="e.g. Juan (or compound: Juan Carlos)">
+    </label>
+    <label>
+      <span>Middle Name <small class="id-field-badge">Optional • Editable</small></span>
+      <input id="scannedMiddleName" name="middleName" placeholder="Leave blank if none (e.g. Santos)">
+    </label>
+    <label>
+      <span>Surname <small class="id-field-badge">Auto-filled • Editable</small></span>
+      <input id="scannedLastName" name="lastName" required placeholder="e.g. Dela Cruz">
+    </label>
+    <label>
+      <span>Birth Date <small class="id-field-badge">Auto-filled • Editable</small></span>
+      <input id="scannedBirthDate" name="birthDate" type="date" required>
+    </label>
+    <label>
+      <span>Sex / Gender <small class="id-field-badge">Auto-filled • Editable</small></span>
+      <select id="scannedGender" name="gender">
+        <option value="Male" selected>Male</option>
+        <option value="Female">Female</option>
+      </select>
+    </label>
+    <label>
+      <span>Civil Status <small class="id-field-badge">Auto-filled • Editable</small></span>
+      <select id="scannedCivilStatus" name="civilStatus">
+        <option value="Single" selected>Single</option>
+        <option value="Married">Married</option>
+        <option value="Widowed">Widowed</option>
+        <option value="Separated">Separated</option>
+      </select>
+    </label>
+    <label>
+      <span>Mobile Number <small class="id-field-badge">Editable</small></span>
+      <input id="scannedMobile" name="mobile" required placeholder="09XX XXX XXXX">
+    </label>
+    <label>
+      <span>Email Address <small id="scannedEmailBadge" class="id-field-badge id-field-missing">Not on ID • Please Enter</small></span>
+      <input id="scannedEmail" name="email" type="email" required placeholder="Enter your active email (e.g. resident@email.com)" class="input-highlight-attention">
+    </label>
+    <label class="span-2">
+      <span>Street / Sitio in Guadalupe Viejo <small class="id-field-badge">Auto-filled • Editable</small></span>
+      <input type="text" id="scannedStreet" name="street" required placeholder="e.g. Gumamela Street, P. Burgos Street">
+    </label>
+    <label class="span-2">
+      <span>Full Residential Address <small class="id-field-badge">Auto-filled • Editable</small></span>
+      <input id="scannedAddress" name="address" required placeholder="House No., Street, Guadalupe Viejo, Makati City">
+    </label>
+    <label>
+      <span>Emergency Contact Person <small class="id-field-badge">ID Back • Editable</small></span>
+      <input id="scannedEmergencyName" name="emergencyName" placeholder="e.g. Maria Dela Cruz">
+    </label>
+    <label>
+      <span>Emergency Contact Number <small class="id-field-badge">ID Back • Editable</small></span>
+      <input id="scannedEmergencyContact" name="emergencyContact" placeholder="e.g. 8470-0081 / 09XX XXX XXXX">
+    </label>
+  </div>
+
+  <div style="margin-top:14px; padding-top:14px; border-top:1px solid var(--line);">
+    <h3 style="margin:0 0 6px 0; color:var(--blue);">Set Your Password</h3>
+    <p class="muted" style="font-size:12px; margin:0 0 12px 0;">Create a password for signing in to your resident account.</p>
+    
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <label>
+        <span>Create Password</span>
+        <div class="password-field">
+          <input id="scannedNewPassword" type="password" placeholder="Create a strong password" required>
+          <button type="button" class="eye">SHOW</button>
+        </div>
+      </label>
+      <div class="password-rules" id="scannedPasswordRules">
+        <span data-rule="len"><b class="rule-icon">○</b> 8+ characters</span>
+        <span data-rule="num"><b class="rule-icon">○</b> Number</span>
+        <span data-rule="upper"><b class="rule-icon">○</b> Uppercase</span>
+      </div>
+      <label>
+        <span>Confirm Password</span>
+        <div class="password-field">
+          <input id="scannedConfirmPassword" type="password" placeholder="Repeat password" required>
+          <button type="button" class="eye">SHOW</button>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <label class="check" style="margin-top:8px;">
+    <input type="checkbox" id="scannedAgreeCheck" required checked>
+    <span>I confirm the information above is accurate and agree to the <a href="#" id="viewScannedTermsLink" style="text-decoration:underline;color:var(--blue2);font-weight:600;">E-Viejo terms and privacy policy</a>.</span>
+  </label>
+
+  <button class="btn btn-primary full" type="submit" style="margin-top:6px;">Create Account &amp; Finish</button>
+  <button class="btn btn-ghost full" type="button" id="backScannedToStart">← Re-scan ID / Choose Another Method</button>
+</form>
+
+<form id="setPasswordForm" class="hidden">
+<div class="verified"><span>✓</span><div><strong>Barangay ID Verified</strong><small id="setPassMetaBadge">Resident Account Verification</small></div></div>
+<div class="stepper"><span class="done">✓</span><i class="done-line"></i><span class="active">2</span><i></i><span>3</span></div>
+<h1>Set your password</h1><p class="muted">Your resident details will be connected to your account.</p>
+<label>Email<input type="email" id="setPassEmail" placeholder="resident@email.com" required></label><label>Mobile Number<input type="tel" id="setPassMobile" placeholder="09XX XXX XXXX" required></label><label>Password<input id="newPassword" type="password" placeholder="Create a strong password" required></label>
+<div class="password-rules" id="setPassPasswordRules">
+  <span data-rule="len"><b class="rule-icon">○</b> 8+ characters</span>
+  <span data-rule="num"><b class="rule-icon">○</b> Number</span>
+  <span data-rule="upper"><b class="rule-icon">○</b> Uppercase</span>
+</div>
+<label>Confirm Password<input type="password" placeholder="Repeat password" required></label><button class="btn btn-primary full" type="submit">Create Account</button>
+</form>
+<form id="manualForm" class="hidden">
+  <div class="no-id-banner">
+    <span></span>
+    <div>
+      <strong>Registering Without a Barangay ID</strong><br>
+      No physical ID yet? Fill out your resident information below to create your official account. Once registered, you can apply for your official Barangay ID anytime inside your resident portal.
+    </div>
+  </div>
+
+  <h2>New Resident Registration</h2>
+  <p class="muted" style="margin-top:-6px; font-size:13px;">Please complete the required details below. All submitted data is kept confidential under Republic Act No. 10173.</p>
+
+  <div class="form-grid">
+    <!-- PERSONAL DETAILS -->
+    <div class="form-section-title"> Personal Details</div>
+    
+    <label>
+      <span>First Name <small style="color:#ef4444;">*</small></span>
+      <input id="manualFirstName" name="firstName" required placeholder="e.g. Juan (or compound: Juan Carlos)">
+    </label>
+    <label>
+      <span>Middle Name <small class="muted" style="font-weight:400;">(Optional - Maternal Surname / M.I.)</small></span>
+      <input id="manualMiddleName" name="middleName" placeholder="e.g. Santos">
+    </label>
+    <label>
+      <span>Surname <small style="color:#ef4444;">*</small></span>
+      <input id="manualLastName" name="lastName" required placeholder="e.g. Dela Cruz">
+    </label>
+    <label>
+      <span>Suffix</span>
+      <select id="manualSuffix" name="suffix">
+        <option value="">None</option>
+        <option value="Jr.">Jr.</option>
+        <option value="Sr.">Sr.</option>
+        <option value="II">II</option>
+        <option value="III">III</option>
+        <option value="IV">IV</option>
+      </select>
+    </label>
+    <label>
+      <span>Date of Birth <small style="color:#ef4444;">*</small></span>
+      <input id="manualBirthDate" name="birthDate" type="date" required>
+    </label>
+    <label>
+      <span>Sex / Gender <small style="color:#ef4444;">*</small></span>
+      <select id="manualGender" name="gender" required>
+        <option value="Male" selected>Male</option>
+        <option value="Female">Female</option>
+      </select>
+    </label>
+    <label class="span-2">
+      <span>Civil Status <small style="color:#ef4444;">*</small></span>
+      <select id="manualCivilStatus" name="civilStatus" required>
+        <option value="Single" selected>Single</option>
+        <option value="Married">Married</option>
+        <option value="Widowed">Widowed</option>
+        <option value="Separated">Separated</option>
+      </select>
+    </label>
+
+    <!-- CONTACT DETAILS -->
+    <div class="form-section-title"> Contact Details</div>
+
+    <label>
+      <span>Contact Mobile Number <small style="color:#ef4444;">*</small></span>
+      <input id="manualMobile" name="mobile" type="tel" required placeholder="09XX XXX XXXX">
+    </label>
+    <label>
+      <span>Email Address <small style="color:#ef4444;">*</small></span>
+      <input id="manualEmail" name="email" type="email" required placeholder="resident@email.com">
+    </label>
+
+    <!-- GUADALUPE VIEJO RESIDENCY -->
+    <div class="form-section-title"> Residency in Barangay Guadalupe Viejo</div>
+
+    <label>
+      <span>House No. / Unit &amp; Bldg <small style="color:#ef4444;">*</small></span>
+      <input id="manualHouseNo" name="houseNo" required placeholder="e.g. Unit 302, 124">
+    </label>
+    <label>
+      <span>Street / Sitio in Guadalupe Viejo <small style="color:#ef4444;">*</small></span>
+      <input type="text" id="manualStreet" name="street" list="streetOptions" required placeholder="e.g. Gumamela Street, P. Burgos Street">
+      <datalist id="streetOptions">
+        <option value="P. Burgos Street">
+        <option value="Gumamela Street">
+        <option value="Camia Street">
+        <option value="Progreso Street">
+        <option value="Coronado Street">
+        <option value="San Jose Street">
+        <option value="San Nicolas Street">
+        <option value="Viejo Ville">
+      </datalist>
+    </label>
+    <label>
+      <span>Residency Status <small style="color:#ef4444;">*</small></span>
+      <select id="manualResidentType" name="residentType" required>
+        <option value="Homeowner / Head of Household" selected>Homeowner / Head of Household</option>
+        <option value="Family Member / Dependent">Family Member / Dependent</option>
+        <option value="Tenant / Renter">Tenant / Renter</option>
+        <option value="Boarder">Boarder</option>
+      </select>
+    </label>
+    <label>
+      <span>Length of Residency <small style="color:#ef4444;">*</small></span>
+      <select id="manualYearsResidency" name="yearsResidency" required>
+        <option value="Less than 1 Year">Less than 1 Year</option>
+        <option value="1 – 3 Years" selected>1 – 3 Years</option>
+        <option value="4 – 10 Years">4 – 10 Years</option>
+        <option value="More than 10 Years">More than 10 Years</option>
+        <option value="Born & Raised in Guadalupe Viejo">Born &amp; Raised in Guadalupe Viejo</option>
+      </select>
+    </label>
+
+    <!-- ACCOUNT SECURITY -->
+    <div class="form-section-title"> Account Security &amp; Password</div>
+
+    <label class="span-2">
+      <span>Create Password <small style="color:#ef4444;">*</small></span>
+      <div class="password-field">
+        <input id="manualNewPassword" type="password" placeholder="Create a strong password" required>
+        <button type="button" class="eye">SHOW</button>
+      </div>
+    </label>
+    <div class="password-rules span-2" id="manualPasswordRules" style="margin-top:-6px;">
+      <span data-rule="len"><b class="rule-icon">○</b> 8+ characters</span>
+      <span data-rule="num"><b class="rule-icon">○</b> Number</span>
+      <span data-rule="upper"><b class="rule-icon">○</b> Uppercase</span>
+    </div>
+    <label class="span-2">
+      <span>Confirm Password <small style="color:#ef4444;">*</small></span>
+      <div class="password-field">
+        <input id="manualConfirmPassword" type="password" placeholder="Repeat password" required>
+        <button type="button" class="eye">SHOW</button>
+      </div>
+    </label>
+  </div>
+
+  <label class="check" style="margin-top:14px;">
+    <input type="checkbox" id="manualAgreeCheck" required checked>
+    <span>I certify that all information submitted is true and correct, and I agree to the <a href="#" id="viewRegTermsLink" style="text-decoration:underline;color:var(--blue2);font-weight:600;">E-Viejo terms and privacy policy</a> under RA 10173.</span>
+  </label>
+
+  <button class="btn btn-primary full" type="submit" style="margin-top:8px;">Create Resident Account</button>
+  <button class="btn btn-ghost full" type="button" id="backManual">← Choose another method</button>
+</form>
+<footer class="auth-footer"><p>&copy; 2026 Barangay Guadalupe Viejo, Makati City &bull; E-Viejo Digital Portal &bull; RA 10173 Compliant</p></footer>
+</div></div></section>
+
+  <!-- Data Privacy Act Consent Modal (RA 10173) -->
+  <div id="registerPrivacyModal" class="modal">
+    <div class="modal-card privacy-modal-card">
+      <button class="modal-close" id="closeRegPrivacyModal" type="button">&times;</button>
+      <div class="privacy-notice-badge">REPUBLIC ACT NO. 10173 • DATA PRIVACY ACT</div>
+      <h2 style="margin:0 0 4px 0;">Barangay Data Privacy Notice & Terms</h2>
+      <p class="muted" style="margin:0; font-size:12px;">Barangay Guadalupe Viejo, Makati City — Digital Resident Services Portal</p>
+      
+      <div class="privacy-text-box">
+        <h4>1. Statement of Privacy Compliance</h4>
+        <p>In compliance with the <strong>Philippine Data Privacy Act of 2012 (Republic Act No. 10173)</strong>, Barangay Guadalupe Viejo is committed to protecting your personal information. By registering, you authorize the Barangay Administration to collect, process, and store your personal data solely for official government transactions, document processing, physical/digital Barangay ID issuance, and resident verification.</p>
+
+        <h4>2. Information Collected & Processing Purpose</h4>
+        <ul>
+          <li>Full Name, Birthdate, Civil Status, Address, & Contact Details</li>
+          <li>Barangay Document Requests (Clearances, Indigency, Permits)</li>
+          <li>Resident Verification & Emergency Assistance Records</li>
+        </ul>
+
+        <h4>3. Confidentiality & Security Safeguards</h4>
+        <p>Your personal data will not be shared with unauthorized third parties or commercial entities. All records are stored under strict barangay administrative oversight and secure access protocols.</p>
+
+        <h4>4. Your Rights under RA 10173</h4>
+        <p>You reserve the right to access, inspect, request corrections, or inquire about your personal records on file at Barangay Guadalupe Viejo, Makati City.</p>
+      </div>
+
+      <label class="privacy-checkbox-row">
+        <input type="checkbox" id="regPrivacyAgreeCheckbox">
+        <span>I have read, understood, and agree to the <strong>Data Privacy Policy</strong> and <strong>Terms of Service</strong> of Barangay Guadalupe Viejo under Republic Act No. 10173.</span>
+      </label>
+
+      <div class="privacy-actions">
+        <button class="btn btn-outline" id="cancelRegPrivacyBtn" type="button">Cancel</button>
+        <button class="btn btn-primary" id="confirmRegPrivacyBtn" type="button" disabled>I Understand & Proceed</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Non-Barangay / Invalid ID Warning Popup Modal -->
+  <div id="invalidIdModal" class="modal hidden">
+    <div class="modal-card invalid-id-modal-card">
+      <button class="modal-close" id="closeInvalidIdModal" type="button" aria-label="Close dialog">&times;</button>
+      <div class="invalid-id-header">
+        <div class="invalid-id-badge">OFFICIAL BARANGAY ID REQUIRED</div>
+        <h2 id="invalidIdModalTitle">Invalid ID Card Scanned</h2>
+        <p class="muted" style="margin:2px 0 0 0; font-size:13px;">Barangay Guadalupe Viejo, Makati City &bull; Constituent Portal</p>
+      </div>
+      
+      <div class="invalid-id-alert-box">
+        <div class="invalid-id-detected-row">
+          <span class="detected-label">Detected Document:</span>
+          <strong class="detected-value" id="invalidDocTypeName">Different ID / Non-Barangay Document</strong>
+        </div>
+        <div class="invalid-id-message-text" id="invalidDocReason">That's not an official Barangay ID. Only the Barangay Guadalupe Viejo Constituent ID is accepted.</div>
+      </div>
+
+      <div class="invalid-id-reminder-box">
+        <div class="reminder-title">Official Barangay ID Required</div>
+        <p>The ID you scanned or uploaded is not an official Barangay ID. This system exclusively accepts the official <strong>Barangay Guadalupe Viejo Constituent ID Card</strong>. Other forms of ID (Driver's License, Passport, PhilSys National ID, SSS/UMID, PhilHealth, or IDs from other barangays) cannot be processed.</p>
+        <p style="margin:6px 0 0 0; font-size:12px; color:#475569;">Don't have your physical Barangay ID card? You can still register easily by choosing <strong>Register Without an ID</strong> below.</p>
+      </div>
+
+      <div class="invalid-id-actions">
+        <button class="btn btn-primary full" id="invalidIdRetryBtn" type="button">Scan Official Barangay ID Again</button>
+        <button class="btn btn-outline full" id="invalidIdManualBtn" type="button" style="margin-top:4px;">Register Without an ID Instead</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../extract.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>

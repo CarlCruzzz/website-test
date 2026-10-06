@@ -1,0 +1,1803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="E-Viejo — Barangay Guadalupe Viejo, Makati City digital resident services portal."
+  >
+
+  <title>Barangay Guadalupe Viejo | E-Viejo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/jpeg" href="assets/viejo.jpg">
+</head>
+
+<body>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast"></div>
+
+
+ <!-- =========================================================
+     PUBLIC NAVIGATION
+     ========================================================= -->
+<header class="topbar public-nav">
+
+  <a class="brand" href="index.html">
+
+    <img
+      src="assets/viejo.jpg"
+      alt="E-Viejo Logo"
+      class="brand-logo"
+    >
+
+    <div>
+      <strong>E-Viejo</strong>
+      <small>Guadalupe Viejo, Makati</small>
+    </div>
+
+  </a>
+
+
+  <!-- MOBILE BURGER -->
+  <button
+    type="button"
+    class="public-mobile-menu"
+    id="publicMobileMenu"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+  >
+    ☰
+  </button>
+
+
+  <nav id="publicNav" aria-label="Main navigation">
+
+    <a href="#services">Services</a>
+    <a href="#about">About Us</a>
+    <a href="#announcements">Announcements ggg</a>
+    <a href="#officials">Officials tayo</a>
+
+
+    <!-- PHILIPPINE STANDARD TIME -->
+    <div class="phst-clock" aria-label="Philippine Standard Time">
+      <span class="phst-label">
+        PHILIPPINE STANDARD TIME
+      </span>
+
+      <strong id="phstTime">
+        12:00:00 AM
+      </strong>
+    </div>
+
+
+    <!-- MOBILE LOGIN / REGISTER -->
+    <div class="mobile-auth-links">
+
+      <a
+        class="mobile-login"
+        href="auth/login.html"
+      >
+        Login
+      </a>
+
+      <a
+        class="mobile-register"
+        href="auth/register.html"
+      >
+        Register
+      </a>
+
+    </div>
+
+  </nav>
+
+
+  <!-- DESKTOP LOGIN / REGISTER -->
+  <div class="nav-actions">
+
+    <a
+      class="btn btn-outline"
+      href="auth/login.html"
+    >
+      Login
+    </a>
+
+    <a
+      class="btn btn-primary"
+      href="auth/register.html"
+    >
+      Register
+    </a>
+
+  </div>
+
+</header>
+
+
+  <main>
+
+
+    <!-- =========================================================
+         HERO
+         ========================================================= -->
+    <section class="hero">
+
+      <div class="hero-copy">
+
+        <span class="eyebrow">
+          BARANGAY GUADALUPE VIEJO • MAKATI CITY
+        </span>
+
+
+        <h1>
+          Your Barangay.<br>
+          <span>Your Service.</span><br>
+          Digitally.
+        </h1>
+
+
+        <p>
+          E-Viejo brings barangay services closer to residents through
+          a convenient, transparent and secure digital platform.
+        </p>
+
+
+        <div class="hero-actions">
+
+          <a
+            class="btn btn-primary btn-lg"
+            href="auth/register.html"
+          >
+            Get Started
+          </a>
+
+
+          <a
+            class="btn btn-outline btn-lg"
+            href="auth/login.html"
+          >
+            I Already Have an Account
+          </a>
+
+        </div>
+
+
+        <div class="trust-row">
+          <span>Fast &amp; convenient</span>
+          <span>Secure &amp; private</span>
+          <span>Track requests</span>
+        </div>
+
+      </div>
+
+
+      <div class="hero-city">
+
+        <img
+          src="assets/viejo ville.jpg"
+          alt="Guadalupe Viejo"
+          class="hero-city-image"
+        >
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         DIGITAL SERVICES
+         ========================================================= -->
+    <section id="services" class="section">
+
+      <div class="section-head">
+
+        <div>
+
+          <span class="eyebrow">
+            DIGITAL SERVICES
+          </span>
+
+          <h2>
+            Everything you need in one place.
+          </h2>
+
+        </div>
+
+
+        <a
+          class="text-btn"
+          href="resident/resident.html"
+        >
+          View Resident Portal →
+        </a>
+
+      </div>
+
+
+      <div class="service-grid">
+
+        <a class="service-card" href="resident/request.html">
+          <strong>Request Clearance</strong>
+          <small>Barangay clearance and certificates</small>
+        </a>
+
+        <a class="service-card" href="resident/digital-id.html">
+          <strong>Digital Barangay ID</strong>
+          <small>View and verify your digital ID</small>
+        </a>
+
+        <a class="service-card" href="resident/physical-id.html">
+          <strong>Physical ID Request</strong>
+          <small>Request your physical Barangay ID</small>
+        </a>
+
+        <a class="service-card" href="resident/tracker.html">
+          <strong>Request Tracker</strong>
+          <small>Follow your request status</small>
+        </a>
+
+        <a class="service-card" href="resident/announcements.html">
+          <strong>Announcements</strong>
+          <small>Barangay news and updates</small>
+        </a>
+
+        <a class="service-card" href="resident/request.html?open=complaint">
+          <strong>Complaints</strong>
+          <small>Submit a complaint or report a concern to the barangay</small>
+        </a>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         ABOUT US & BARANGAY INFORMATION
+         ========================================================= -->
+    <section id="about" class="section about-section" style="padding-bottom: 30px;">
+
+      <!-- ABOUT E-VIEJO BANNER -->
+      <div class="info-banner" style="margin: 0 0 40px 0;">
+
+        <div class="about-logo">
+          <img src="assets/viejo.jpg" alt="Barangay Guadalupe Viejo Seal">
+        </div>
+
+        <div>
+
+          <span class="eyebrow">ABOUT E-VIEJO</span>
+
+          <h3>
+            Bringing barangay services closer to every Guadalupe Viejo resident.
+          </h3>
+
+          <p>
+            E-Viejo is the official digital resident services portal of Barangay Guadalupe Viejo, Makati City. 
+            Designed to make document clearances, resident IDs, blotter reporting, and administrative requests more convenient, transparent, and accessible under the Data Privacy Act (RA 10173).
+          </p>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- SECTION HEAD -->
+      <div class="section-head">
+
+        <div>
+
+          <span class="eyebrow">BARANGAY INFORMATION</span>
+
+          <h2>
+            Know Your Barangay
+          </h2>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- BARANGAY INFO GRID -->
+      <div class="barangay-info-grid">
+
+
+        <!-- LOCATION -->
+        <article class="info-card">
+
+          <div class="info-card-heading">
+
+            <div>
+
+              <span class="eyebrow">LOCATION</span>
+
+              <h3>
+                Barangay Hall
+              </h3>
+
+            </div>
+
+          </div>
+
+
+          <p>
+
+            <strong>
+              Barangay Guadalupe Viejo Hall
+            </strong>
+            <br>
+
+            Gumamela Street corner Camia Street,
+            Guadalupe Viejo, Makati City, Metro Manila 1211
+
+            <small
+              style="color:var(--blue2); font-weight:600; display:block; margin-top:4px;"
+            >
+              Located near the Power Plant Mall Rockwell, Makati City
+            </small>
+
+          </p>
+
+
+          <div class="map-preview">
+
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7723.220230191507!2d121.03009919357912!3d14.564274500000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c856993be809%3A0x7ff9b46bde7ec150!2sGuadalupe%20Viejo%20Barangay%20Hall!5e0!3m2!1sen!2sus!4v1789302690539!5m2!1sen!2sus"
+              width="600"
+              height="450"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+            ></iframe>
+
+          </div>
+
+
+          <a
+            class="info-action"
+            href="https://maps.app.goo.gl/PF22XWMcRs8bWzXs6"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open in Google Maps
+          </a>
+
+        </article>
+
+
+
+        <!-- CONTACT -->
+        <article class="info-card">
+
+          <div class="info-card-heading">
+
+            <div>
+
+              <span class="eyebrow">
+                CONTACT
+              </span>
+
+              <h3>
+                Barangay Hall
+              </h3>
+
+            </div>
+
+          </div>
+
+
+          <p>
+            Contact the barangay office for inquiries, document verification, community concerns, and official certifications.
+          </p>
+
+
+          <div class="contact-list">
+
+            <div>
+
+              <div>
+
+                <strong>
+                  (02) 8672-0032
+                </strong>
+
+                <small>
+                  Barangay Hall Trunkline
+                </small>
+
+              </div>
+
+            </div>
+
+
+            <div>
+
+              <div>
+
+                <strong>
+                  +63 917 123 4567
+                </strong>
+
+                <small>
+                  Resident Assistance Desk
+                </small>
+
+              </div>
+
+            </div>
+
+
+            <div>
+
+              <div>
+
+                <strong>
+                  info@guadalupeviejo.makati.gov.ph
+                </strong>
+
+                <small>
+                  Official Barangay Email
+                </small>
+
+              </div>
+
+            </div>
+
+
+            <div>
+
+              <div>
+
+                <strong>
+                  Monday – Friday • 8:00 AM – 5:00 PM
+                </strong>
+
+                <small>
+                  Official Barangay Hall Office Hours
+                </small>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <p class="contact-note">
+
+            <strong>
+              Office Reminder:
+            </strong>
+
+            Cash collections, official receipts (OR), and physical document claiming are processed at the Treasury Window during office hours.
+
+          </p>
+
+        </article>
+
+
+
+        <!-- EMERGENCY CONTACTS -->
+        <article class="info-card">
+
+          <div class="info-card-heading">
+
+            <div>
+
+              <span class="eyebrow">
+                EMERGENCY CONTACTS
+              </span>
+
+              <h3>
+                Important Hotlines
+              </h3>
+
+            </div>
+
+          </div>
+
+
+          <p>
+            Keep these emergency hotlines handy for immediate medical, fire, police, or rescue assistance within Guadalupe Viejo.
+          </p>
+
+
+          <div class="emergency-list">
+
+
+            <a href="tel:911" class="emergency-item">
+
+              <div>
+
+                <strong>
+                  National Emergency Hotline
+                </strong>
+
+                <small>
+                  Police • Fire • Medical • Rescue
+                </small>
+
+              </div>
+
+              <span class="emergency-badge">
+                911
+              </span>
+
+            </a>
+
+
+            <a href="tel:+63286720032" class="emergency-item">
+
+              <div>
+
+                <strong>
+                  Brgy. Guadalupe Viejo Peace &amp; Order
+                </strong>
+
+                <small>
+                  Barangay Patrol &amp; Tanod Desk
+                </small>
+
+              </div>
+
+              <span class="emergency-badge">
+                Call
+              </span>
+
+            </a>
+
+
+            <a href="tel:143" class="emergency-item">
+
+              <div>
+
+                <strong>
+                  Philippine Red Cross
+                </strong>
+
+                <small>
+                  Emergency Medical &amp; Ambulance
+                </small>
+
+              </div>
+
+              <span class="emergency-badge">
+                143
+              </span>
+
+            </a>
+
+
+            <a href="tel:+63282365790" class="emergency-item">
+
+              <div>
+
+                <strong>
+                  Makati C3 Command Center
+                </strong>
+
+                <small>
+                  Makati City Disaster &amp; Emergency
+                </small>
+
+              </div>
+
+              <span class="emergency-badge">
+                168
+              </span>
+
+            </a>
+
+
+            <a href="tel:+63288820761" class="emergency-item">
+
+              <div>
+
+                <strong>
+                  Bureau of Fire Protection (BFP)
+                </strong>
+
+                <small>
+                  Guadalupe Fire Substation
+                </small>
+
+              </div>
+
+              <span class="emergency-badge">
+                Call
+              </span>
+
+            </a>
+
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         ANNOUNCEMENTS
+         ========================================================= -->
+    <section
+      id="announcements"
+      class="section compact-section"
+    >
+
+      <div class="section-head">
+
+        <div>
+
+          <span class="eyebrow">
+            LATEST
+          </span>
+
+          <h2>
+            Barangay Announcements
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="announcement-grid">
+
+
+        <article class="announcement">
+
+          <span class="date">
+            MAY 20
+          </span>
+
+
+          <div>
+
+            <strong>
+              Community Clean-Up Drive
+            </strong>
+
+            <p>
+              Schedule and community reminders will appear here.
+            </p>
+
+          </div>
+
+        </article>
+
+
+
+        <article class="announcement">
+
+          <span class="date">
+            MAY 18
+          </span>
+
+
+          <div>
+
+            <strong>
+              Distribution of School Supplies
+            </strong>
+
+            <p>
+              Check eligibility and claiming instructions.
+            </p>
+
+          </div>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         BARANGAY OFFICIALS & COMMITTEES
+         ========================================================= -->
+    <section
+      id="officials"
+      class="section officials-section"
+    >
+
+
+      <div class="section-head">
+
+        <div>
+
+          <span class="eyebrow">
+            BARANGAY GOVERNMENT
+          </span>
+
+          <h2>
+            Barangay Officials &amp; Committees
+          </h2>
+
+          <p
+            class="muted"
+            style="margin:4px 0 0 0; font-size:14px;"
+          >
+            Meet the elected officials, department committees, and administrative staff serving the residents of Barangay Guadalupe Viejo.
+          </p>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- PUNONG BARANGAY -->
+      <div class="official-group">
+
+        <div class="official-group-heading">
+
+          <span class="eyebrow">
+            BARANGAY LEADERSHIP
+          </span>
+
+          <h3>
+            Punong Barangay
+          </h3>
+
+        </div>
+
+
+        <article class="captain-card">
+
+          <div class="official-photo captain-photo">
+
+            <img
+              src="assets/officials/punong-barangay.jpg"
+              alt="Miko Gatchalian"
+              onerror="this.src='assets/viejo.jpg'"
+            >
+
+          </div>
+
+
+          <div class="official-details">
+
+            <span class="official-position">
+              PUNONG BARANGAY
+            </span>
+
+            <h3>
+              Miko Gatchalian
+            </h3>
+
+            <p>
+              Punong Barangay • Head of Sangguniang Barangay &amp; Lupon Tagapamayapa
+            </p>
+
+            <span
+              class="official-committee"
+              style="background:#dbeafe; color:#1e3a8a; border-color:#bfdbfe;"
+            >
+              Overall Barangay Administration &amp; Public Safety
+            </span>
+
+          </div>
+
+        </article>
+
+      </div>
+
+
+
+      <!-- SANGGUNIANG BARANGAY -->
+      <div class="official-group">
+
+        <div class="official-group-heading">
+
+          <span class="eyebrow">
+            SANGGUNIANG BARANGAY
+          </span>
+
+          <h3>
+            Barangay Council &amp; Committee Chairpersons
+          </h3>
+
+          <p>
+            Elected Barangay Kagawads and their assigned legislative and service committees.
+          </p>
+
+        </div>
+
+
+        <div class="officials-grid">
+
+
+          <!-- KAGAWAD 1 -->
+          <article class="official-card">
+
+            <div class="official-photo">
+
+              <img
+                src="assets/officials/luis-almario.jpg"
+                alt="Luis P. Almario Jr."
+                onerror="this.src='assets/viejo.jpg'"
+              >
+
+            </div>
+
+
+            <div class="official-details">
+
+              <span class="official-position">
+                BARANGAY KAGAWAD
+              </span>
+
+              <strong>
+                Luis P. Almario Jr.
+              </strong>
+
+              <small>
+                Sangguniang Barangay Member
+              </small>
+
+              <span class="official-committee">
+                Chairperson: Committee on Peace &amp; Order
+              </span>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- KAGAWAD 2 -->
+          <article class="official-card">
+
+            <div class="official-photo">
+
+              <img
+                src="assets/officials/ferdinand-evangelista.jpg"
+                alt="Ferdinand B. Evangelista"
+                onerror="this.src='assets/viejo.jpg'"
+              >
+
+            </div>
+
+
+            <div class="official-details">
+
+              <span class="official-position">
+                BARANGAY KAGAWAD
+              </span>
+
+              <strong>
+                Ferdinand B. Evangelista
+              </strong>
+
+              <small>
+                Sangguniang Barangay Member
+              </small>
+
+              <span class="official-committee">
+                Chairperson: Committee on Health &amp; Sanitation
+              </span>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- KAGAWAD 3 -->
+          <article class="official-card">
+
+            <div class="official-photo">
+
+              <img
+                src="assets/officials/andrea-jacome.jpg"
+                alt="Andrea Blanche S. Jacome"
+                onerror="this.src='assets/viejo.jpg'"
+              >
+
+            </div>
+
+
+            <div class="official-details">
+
+              <span class="official-position">
+                BARANGAY KAGAWAD
+              </span>
+
+              <strong>
+                Andrea Blanche S. Jacome
+              </strong>
+
+              <small>
+                Sangguniang Barangay Member
+              </small>
+
+              <span class="official-committee">
+                Chairperson: Committee on Appropriations &amp; Finance
+              </span>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- KAGAWAD 4 -->
+          <article class="official-card">
+
+            <div class="official-photo">
+
+              <img
+                src="assets/officials/shirley-borja.jpg"
+                alt="Shirley G. Borja"
+                onerror="this.src='assets/viejo.jpg'"
+              >
+
+            </div>
+
+
+            <div class="official-details">
+
+              <span class="official-position">
+                BARANGAY KAGAWAD
+              </span>
+
+              <strong>
+                Shirley G. Borja
+              </strong>
+
+              <small>
+                Sangguniang Barangay Member
+              </small>
+
+              <span class="official-committee">
+                Chairperson: Committee on Women &amp; Family Affairs
+              </span>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- KAGAWAD 5 -->
+          <article class="official-card">
+
+            <div class="official-photo">
+
+              <img
+                src="assets/officials/abelardo-brillantes.jpg"
+                alt="Abelardo U. Brillantes"
+                onerror="this.src='assets/viejo.jpg'"
+              >
+
+            </div>
+
+
+            <div class="official-details">
+
+              <span class="official-position">
+                BARANGAY KAGAWAD
+              </span>
+
+              <strong>
+                Abelardo U. Brillantes
+              </strong>
+
+              <small>
+                Sangguniang Barangay Member
+              </small>
+
+              <span class="official-committee">
+                Chairperson: Committee on Public Works &amp; Infra
+              </span>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- KAGAWAD 6 -->
+          <article class="official-card">
+
+            <div class="official-photo">
+
+              <img
+                src="assets/officials/crisostomo-cunanan.jpg"
+                alt="Crisostomo B. Cunanan"
+                onerror="this.src='assets/viejo.jpg'"
+              >
+
+            </div>
+
+
+            <div class="official-details">
+
+              <span class="official-position">
+                BARANGAY KAGAWAD
+              </span>
+
+              <strong>
+                Crisostomo B. Cunanan
+              </strong>
+
+              <small>
+                Sangguniang Barangay Member
+              </small>
+
+              <span class="official-committee">
+                Chairperson: Committee on Transportation &amp; Traffic
+              </span>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- KAGAWAD 7 -->
+          <article class="official-card">
+
+            <div class="official-photo">
+
+              <img
+                src="assets/officials/genaro-gutierrez.jpg"
+                alt="Genaro Silvestre Gutierrez"
+                onerror="this.src='assets/viejo.jpg'"
+              >
+
+            </div>
+
+
+            <div class="official-details">
+
+              <span class="official-position">
+                BARANGAY KAGAWAD
+              </span>
+
+              <strong>
+                Genaro Silvestre Gutierrez
+              </strong>
+
+              <small>
+                Sangguniang Barangay Member
+              </small>
+
+              <span class="official-committee">
+                Chairperson: Committee on Livelihood &amp; Human Rights
+              </span>
+
+            </div>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+
+
+      <!-- BARANGAY ADMINISTRATION -->
+      <div class="official-group">
+
+        <div class="official-group-heading">
+
+          <span class="eyebrow">
+            BARANGAY APPOINTED OFFICIALS
+          </span>
+
+          <h3>
+            Barangay Administration
+          </h3>
+
+        </div>
+
+
+        <div class="admin-official-grid">
+
+
+          <!-- SECRETARY -->
+          <article class="official-card">
+
+            <div class="official-photo">
+
+              <img
+                src="assets/officials/secretary.jpg"
+                alt="Myrna F. Casabon"
+                onerror="this.src='assets/viejo.jpg'"
+              >
+
+            </div>
+
+
+            <div class="official-details">
+
+              <span class="official-position">
+                BARANGAY SECRETARY
+              </span>
+
+              <strong>
+                Myrna F. Casabon
+              </strong>
+
+              <small>
+                Barangay Secretariat • Records &amp; Document Clearances
+              </small>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- TREASURER -->
+          <article class="official-card">
+
+            <div class="official-photo">
+
+              <img
+                src="assets/officials/treasurer.jpg"
+                alt="Myla C. Gepitan"
+                onerror="this.src='assets/viejo.jpg'"
+              >
+
+            </div>
+
+
+            <div class="official-details">
+
+              <span class="official-position">
+                BARANGAY TREASURER
+              </span>
+
+              <strong>
+                Myla C. Gepitan
+              </strong>
+
+              <small>
+                Barangay Treasury • Cash Collections &amp; Financial Disbursements
+              </small>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- BARANGAY ADMINISTRATOR -->
+          <article class="official-card">
+
+            <div class="official-photo">
+
+              <img
+                src="assets/officials/administrator.jpg"
+                alt="Eduardo Gatchalian"
+                onerror="this.src='assets/viejo.jpg'"
+              >
+
+            </div>
+
+
+            <div class="official-details">
+
+              <span class="official-position">
+                BARANGAY ADMINISTRATOR
+              </span>
+
+              <strong>
+                Eduardo Gatchalian
+              </strong>
+
+              <small>
+                Barangay Administration • Office Operations &amp; Coordination
+              </small>
+
+            </div>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+
+
+      <!-- SK OFFICIALS -->
+      <div class="official-group">
+
+
+        <div class="official-group-heading">
+
+          <span class="eyebrow">
+            SANGGUNIANG KABATAAN
+          </span>
+
+          <h3>
+            SK Officials
+          </h3>
+
+        </div>
+
+
+
+        <!-- SK CHAIRPERSON -->
+        <article class="sk-chairperson">
+
+          <div class="official-photo">
+
+            <img
+              src="assets/officials/sk-chairperson.jpg"
+              alt="Jeayla Marteena P. Tavera"
+              onerror="this.src='assets/viejo.jpg'"
+            >
+
+          </div>
+
+
+          <div class="official-details">
+
+            <span
+              class="official-position"
+              style="color:var(--purple);"
+            >
+              SK CHAIRPERSON
+            </span>
+
+
+            <h3>
+              Jeayla Marteena P. Tavera
+            </h3>
+
+
+            <p>
+              Sangguniang Kabataan Chairperson • Head of Youth Programs
+            </p>
+
+
+            <span
+              class="official-committee"
+              style="color:var(--purple); background:var(--purple2); border-color:#ddd6fe;"
+            >
+              Chairperson: Committee on Youth &amp; Sports Development
+            </span>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- SK KAGAWAD -->
+        <div class="sk-members-heading">
+
+          <span class="eyebrow">
+            SK COUNCIL MEMBERS
+          </span>
+
+          <h4>
+            SK Kagawad
+          </h4>
+
+        </div>
+
+
+
+        <div class="sk-grid">
+
+
+          <!-- SK KAGAWAD 1 -->
+          <article class="official-card">
+
+            <div class="official-photo">
+
+              <img
+                src="assets/officials/sk-member-1.jpg"
+                alt="Samantha Rae Orial"
+                onerror="this.src='assets/viejo.jpg'"
+              >
+
+            </div>
+
+
+            <div class="official-details">
+
+              <span
+                class="official-position"
+                style="color:var(--purple);"
+              >
+                SK KAGAWAD
+              </span>
+
+              <strong>
+                Samantha Rae Orial
+              </strong>
+
+              <small>
+                SK Council Member
+              </small>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- SK KAGAWAD 2 -->
+          <article class="official-card">
+
+            <div class="official-photo">
+
+              <img
+                src="assets/officials/sk-member-2.jpg"
+                alt="Daniella Catamora"
+                onerror="this.src='assets/viejo.jpg'"
+              >
+
+            </div>
+
+
+            <div class="official-details">
+
+              <span
+                class="official-position"
+                style="color:var(--purple);"
+              >
+                SK KAGAWAD
+              </span>
+
+              <strong>
+                Daniella Catamora
+              </strong>
+
+              <small>
+                SK Council Member
+              </small>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- SK KAGAWAD 3 -->
+          <article class="official-card">
+
+            <div class="official-photo">
+
+              <img
+                src="assets/officials/sk-member-3.jpg"
+                alt="Angelo Villalon"
+                onerror="this.src='assets/viejo.jpg'"
+              >
+
+            </div>
+
+
+            <div class="official-details">
+
+              <span
+                class="official-position"
+                style="color:var(--purple);"
+              >
+                SK KAGAWAD
+              </span>
+
+              <strong>
+                Angelo Villalon
+              </strong>
+
+              <small>
+                SK Council Member
+              </small>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- SK KAGAWAD 4 -->
+          <article class="official-card">
+
+            <div class="official-photo">
+
+              <img
+                src="assets/officials/sk-member-4.jpg"
+                alt="Bryan Mendoza"
+                onerror="this.src='assets/viejo.jpg'"
+              >
+
+            </div>
+
+
+            <div class="official-details">
+
+              <span
+                class="official-position"
+                style="color:var(--purple);"
+              >
+                SK KAGAWAD
+              </span>
+
+              <strong>
+                Bryan Mendoza
+              </strong>
+
+              <small>
+                SK Council Member
+              </small>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- SK KAGAWAD 5 -->
+          <article class="official-card">
+
+            <div class="official-photo">
+
+              <img
+                src="assets/officials/sk-member-5.jpg"
+                alt="Gabrielle Sanchez"
+                onerror="this.src='assets/viejo.jpg'"
+              >
+
+            </div>
+
+
+            <div class="official-details">
+
+              <span
+                class="official-position"
+                style="color:var(--purple);"
+              >
+                SK KAGAWAD
+              </span>
+
+              <strong>
+                Gabrielle Sanchez
+              </strong>
+
+              <small>
+                SK Council Member
+              </small>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- SK KAGAWAD 6 -->
+          <article class="official-card">
+
+            <div class="official-photo">
+
+              <img
+                src="assets/officials/sk-member-6.jpg"
+                alt="John Angelo Tupas"
+                onerror="this.src='assets/viejo.jpg'"
+              >
+
+            </div>
+
+
+            <div class="official-details">
+
+              <span
+                class="official-position"
+                style="color:var(--purple);"
+              >
+                SK KAGAWAD
+              </span>
+
+              <strong>
+                John Angelo Tupas
+              </strong>
+
+              <small>
+                SK Council Member
+              </small>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- SK KAGAWAD 7 -->
+          <article class="official-card">
+
+            <div class="official-photo">
+
+              <img
+                src="assets/officials/sk-member-7.jpg"
+                alt="Marco Salvador"
+                onerror="this.src='assets/viejo.jpg'"
+              >
+
+            </div>
+
+
+            <div class="official-details">
+
+              <span
+                class="official-position"
+                style="color:var(--purple);"
+              >
+                SK KAGAWAD
+              </span>
+
+              <strong>
+                Marco Salvador
+              </strong>
+
+              <small>
+                SK Council Member
+              </small>
+
+            </div>
+
+          </article>
+
+
+        </div>
+
+
+
+        <br><br>
+
+
+        <!-- SK ADMINISTRATION -->
+        <div class="official-group">
+
+          <div class="official-group-heading">
+
+            <span class="eyebrow">
+              SK APPOINTED OFFICIALS
+            </span>
+
+            <h3>
+              SK Administration
+            </h3>
+
+          </div>
+
+
+          <div class="admin-official-grid">
+
+
+            <!-- SK SECRETARY -->
+            <article class="official-card">
+
+              <div class="official-photo">
+
+                <img
+                  src="assets/officials/sk-secretary.jpg"
+                  alt="Mary Rose Tavera"
+                  onerror="this.src='assets/viejo.jpg'"
+                >
+
+              </div>
+
+
+              <div class="official-details">
+
+                <span class="official-position">
+                  SK SECRETARY
+                </span>
+
+                <strong>
+                  Mary Rose Tavera
+                </strong>
+
+                <small>
+                  SK Secretariat • Records &amp; Youth Program Documentation
+                </small>
+
+              </div>
+
+            </article>
+
+
+
+            <!-- SK TREASURER -->
+            <article class="official-card">
+
+              <div class="official-photo">
+
+                <img
+                  src="assets/officials/sk-treasurer.jpg"
+                  alt="Abel Del Ayre"
+                  onerror="this.src='assets/viejo.jpg'"
+                >
+
+              </div>
+
+
+              <div class="official-details">
+
+                <span class="official-position">
+                  SK TREASURER
+                </span>
+
+                <strong>
+                  Abel Del Ayre
+                </strong>
+
+                <small>
+                  SK Treasury • Youth Fund &amp; Financial Records
+                </small>
+
+              </div>
+
+            </article>
+
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+  <footer class="public-footer">
+
+
+    <div class="footer-inner">
+
+
+      <div class="footer-brand">
+
+        <img
+          src="assets/viejo.jpg"
+          alt="E-Viejo Logo"
+        >
+
+
+        <div>
+
+          <strong>
+            E-Viejo
+          </strong>
+
+
+          <small>
+            Barangay Guadalupe Viejo, Makati City
+          </small>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="footer-column">
+
+        <strong>
+          Quick Links
+        </strong>
+
+
+        <div class="footer-links">
+
+          <a href="#services">
+            Services
+          </a>
+
+          <a href="#about">
+            About Us
+          </a>
+
+          <a href="#officials">
+            Barangay Officials
+          </a>
+
+          <a href="#announcements">
+            Announcements
+          </a>
+
+          <a href="auth/login.html">
+            Resident Login
+          </a>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="footer-column">
+
+        <strong>
+          Contact
+        </strong>
+
+
+        <div class="footer-contact">
+
+          <span>
+            Barangay Hall
+          </span>
+
+          <span>
+            (02) 8672-0032
+          </span>
+
+          <span>
+            Emergency: 911
+          </span>
+
+          <span>
+            Philippine Red Cross: 143
+          </span>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+
+    <div class="footer-bottom">
+
+      <span>
+        © 2026 E-Viejo. Barangay Guadalupe Viejo, Makati City.
+      </span>
+
+
+      <span>
+        Digital Resident Services Portal
+      </span>
+
+    </div>
+
+
+  </footer>
+
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>

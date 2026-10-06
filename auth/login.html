@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="E-Viejo — Barangay Guadalupe Viejo, Makati City digital resident services portal.">
+  <title>Login | E-Viejo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/jpeg" href="../assets/viejo.jpg">
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+
+<section class="auth-screen">
+<div class="auth-wrap">
+<a class="back-link" href="../index.html">← Back to E-Viejo</a>
+<div class="auth-card">
+<div class="auth-brand"><div class="side-logo auth-logo"><img src="../assets/viejo.jpg" alt="E-Viejo logo" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span>GV</span></div><strong>E-Viejo</strong><small>Resident Portal</small></div>
+<h1>Welcome back!</h1><p class="muted">Login to continue to your resident account.</p>
+
+<form id="passwordLogin" class="auth-form">
+<label>
+  <span>Email, Mobile, or Barangay ID No.</span>
+  <input id="loginIdentifierInput" type="text" placeholder="juan@email.com, 09XXXXXXXXX, or GVCID-..." required>
+</label>
+<label>Password<div class="password-field"><input id="loginPasswordInput" type="password" placeholder="Enter your password" required><button type="button" class="eye">SHOW</button></div></label>
+<div class="form-row between"><label class="check"><input type="checkbox"> Remember me</label><button type="button" class="link-btn" onclick="toast('Please visit the Barangay Hall or contact the administration desk for identity verification and password reset assistance.')">Forgot password?</button></div>
+<button class="btn btn-primary full" id="loginSubmitBtn" type="submit">Login</button>
+</form>
+<p class="auth-foot">Don't have an account? <a class="link-btn" href="register.html">Register here</a></p>
+</div><div class="security-note">Your account is protected with secure authentication.</div>
+<div class="admin-login-note"><span>Barangay Staff?</span> <a href="admin-login.html">Admin Portal Login</a></div>
+<footer class="auth-footer"><p>&copy; 2026 Barangay Guadalupe Viejo, Makati City &bull; E-Viejo Digital Portal &bull; RA 10173 Compliant</p></footer>
+</div></section>
+
+  <!-- DATA PRIVACY ACT (RA 10173) CONSENT MODAL -->
+  <div id="privacyConsentModal" class="modal">
+    <div class="modal-card privacy-modal-card">
+      <button class="modal-close" id="closePrivacyModal" type="button">&times;</button>
+      <div class="privacy-notice-badge">REPUBLIC ACT NO. 10173 • DATA PRIVACY ACT</div>
+      <h2 style="margin:0 0 4px 0;">Barangay Data Privacy Notice & Terms</h2>
+      <p class="muted" style="margin:0; font-size:12px;">Barangay Guadalupe Viejo, Makati City — Digital Resident Services Portal</p>
+      
+      <div class="privacy-text-box">
+        <h4>1. Statement of Privacy Compliance</h4>
+        <p>In compliance with the <strong>Philippine Data Privacy Act of 2012 (Republic Act No. 10173)</strong>, Barangay Guadalupe Viejo is committed to protecting your personal information. By logging in, you authorize the Barangay Administration to collect, process, and store your personal data solely for official government transactions, document processing, physical/digital Barangay ID issuance, and resident verification.</p>
+
+        <h4>2. Information Collected & Processing Purpose</h4>
+        <ul>
+          <li>Full Name, Birthdate, Civil Status, Address, & Contact Details</li>
+          <li>Barangay Document Requests (Clearances, Indigency, Permits)</li>
+          <li>Resident Verification & Emergency Assistance Records</li>
+        </ul>
+
+        <h4>3. Confidentiality & Security Safeguards</h4>
+        <p>Your personal data will not be shared with unauthorized third parties or commercial entities. All records are stored under strict barangay administrative oversight and secure access protocols.</p>
+
+        <h4>4. Your Rights under RA 10173</h4>
+        <p>You reserve the right to access, inspect, request corrections, or inquire about your personal records on file at Barangay Guadalupe Viejo, Makati City.</p>
+      </div>
+
+      <label class="privacy-checkbox-row">
+        <input type="checkbox" id="privacyAgreeCheckbox">
+        <span>I have read, understood, and agree to the <strong>Data Privacy Policy</strong> and <strong>Terms of Service</strong> of Barangay Guadalupe Viejo under Republic Act No. 10173.</span>
+      </label>
+
+      <div class="privacy-actions">
+        <button class="btn btn-outline" id="cancelPrivacyBtn" type="button">Cancel</button>
+        <button class="btn btn-primary" id="confirmPrivacyLoginBtn" type="button" disabled>I Understand & Proceed</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Non-Barangay / Invalid ID Warning Popup Modal -->
+  <div id="invalidIdModal" class="modal hidden">
+    <div class="modal-card invalid-id-modal-card">
+      <button class="modal-close" id="closeInvalidIdModal" type="button" aria-label="Close dialog">&times;</button>
+      <div class="invalid-id-header">
+        <div class="invalid-id-badge">OFFICIAL BARANGAY ID REQUIRED</div>
+        <h2 id="invalidIdModalTitle">Invalid ID Card Scanned</h2>
+        <p class="muted" style="margin:2px 0 0 0; font-size:13px;">Barangay Guadalupe Viejo, Makati City &bull; Constituent Portal</p>
+      </div>
+      
+      <div class="invalid-id-alert-box">
+        <div class="invalid-id-detected-row">
+          <span class="detected-label">Detected Document:</span>
+          <strong class="detected-value" id="invalidDocTypeName">Different ID / Non-Barangay Document</strong>
+        </div>
+        <div class="invalid-id-message-text" id="invalidDocReason">That's not an official Barangay ID. Only the Barangay Guadalupe Viejo Constituent ID is accepted.</div>
+      </div>
+
+      <div class="invalid-id-reminder-box">
+        <div class="reminder-title">Official Barangay ID Required</div>
+        <p>The ID you scanned or uploaded is not an official Barangay ID. This system exclusively accepts the official <strong>Barangay Guadalupe Viejo Constituent ID Card</strong>. Other forms of ID (Driver's License, Philippine Passport, PhilSys National ID, UMID, PhilHealth, or IDs from other barangays) cannot be used for auto-extraction.</p>
+        <p style="margin:6px 0 0 0; font-size:12px; color:#475569;">You can also sign in directly using your registered <strong>Email Address</strong> or <strong>Mobile Number</strong> with your password.</p>
+      </div>
+
+      <div class="invalid-id-actions">
+        <button class="btn btn-primary full" id="invalidIdRetryBtn" type="button">Scan Official Barangay ID Again</button>
+        <button class="btn btn-outline full" id="invalidIdManualBtn" type="button" style="margin-top:4px;">Login with Password Instead</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../extract.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>

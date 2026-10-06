@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="E-Viejo — Barangay Guadalupe Viejo, Makati City digital resident services portal.">
+  <title>Admin Dashboard | E-Viejo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/jpeg" href="../assets/viejo.jpg">
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+<section class="app-screen admin-theme">
+      <aside class="sidebar admin-side">
+      <a class="brand side-brand" href="index.html">
+        <div class="side-logo"><img src="../assets/viejo.jpg" alt="E-Viejo logo" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span>GV</span></div>
+        <div class="side-brand-copy"><strong>E-Viejo</strong><small>Admin Portal</small></div><span class="portal-pill">ADMIN</span>
+      </a>
+      <div class="side-welcome">Barangay administration</div>
+      <nav class="side-nav"><a class="side-link active" href="index.html"><span class="side-icon">⌂</span><span>Dashboard</span></a><a class="side-link" href="requests.html"><span class="side-icon">▣</span><span>Requests</span></a><a class="side-link" href="residents.html"><span class="side-icon">♙</span><span>Residents</span></a><a class="side-link" href="incidents.html"><span class="side-icon">!</span><span>Incident Reports</span></a><a class="side-link" href="payments.html"><span class="side-icon">₱</span><span>Payments &amp; Cash</span></a><a class="side-link" href="announcements.html"><span class="side-icon">◉</span><span>Announcements</span></a><a class="side-link" href="reports.html"><span class="side-icon">▥</span><span>Reports &amp; Analytics</span></a><a class="side-link" href="users.html"><span class="side-icon">⚙</span><span>Users &amp; Roles</span></a><a class="side-link" href="logs.html"><span class="side-icon">⌁</span><span>Audit Logs</span></a></nav>
+      <div class="side-bottom">
+        <div class="side-help"><span>?</span><div><strong>Need help?</strong><small>Visit the barangay office</small></div></div>
+        <a class="logout" href="../index.html"><span class="side-icon">↪</span><span>Logout</span></a>
+      </div>
+    </aside>
+      <div class="app-content">
+        <header class="app-topbar">
+      <div><button class="mobile-menu" id="mobileMenu">☰</button><span class="page-label">Admin Dashboard</span></div>
+       <div class="top-user"><span></span><div class="avatar">JD</div><strong>Juan Dela Cruz</strong><span></span></div>
+    </header>
+        <main class="page">
+
+<!-- PAGE HEADING -->
+<div class="page-heading">
+  <div>
+    <span class="eyebrow">BARANGAY GUADALUPE VIEJO, MAKATI CITY</span>
+    <h1>Good day, Admin User.</h1>
+    <p class="muted">Overview of all active barangay services, incidents, payments, and recent activity.</p>
+  </div>
+  <div style="display:flex; gap:10px; flex-wrap:wrap;">
+    <a class="btn btn-outline" href="requests.html">Manage Requests</a>
+    <a class="btn btn-primary" href="incidents.html">View Incidents</a>
+  </div>
+</div>
+
+<!-- STAT OVERVIEW -->
+<div class="stat-grid five">
+  <div class="stat-card blue-stat">
+    <small>Total Residents</small>
+    <strong id="dashStatResidents">0</strong>
+    <span>Registered</span>
+  </div>
+  <div class="stat-card yellow-stat">
+    <small>Pending Requests</small>
+    <strong id="dashStatPending">0</strong>
+    <span>Needs action</span>
+  </div>
+  <div class="stat-card green-stat">
+    <small>Approved This Month</small>
+    <strong id="dashStatApproved">0</strong>
+    <span>Processed</span>
+  </div>
+  <div class="stat-card purple-stat">
+    <small>For Payment</small>
+    <strong id="dashStatPayment">0</strong>
+    <span>Cash collection</span>
+  </div>
+  <div class="stat-card blue-stat">
+    <small>Open Incidents</small>
+    <strong id="dashIncidentCount">0</strong>
+    <span>Active reports</span>
+  </div>
+</div>
+
+<!-- MAIN DASHBOARD GRID -->
+<div class="dashboard-grid admin-grid">
+
+  <!-- REQUESTS NEEDING ACTION -->
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Requests Needing Action</h2>
+      <a class="text-btn" href="requests.html">Manage All</a>
+    </div>
+    <div class="request-list" id="dashRequestsList">
+      <div class="request-item">
+        <span class="doc-icon">▤</span>
+        <div><strong>Loading...</strong><small>Fetching requests...</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECENT INCIDENTS -->
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Recent Incidents</h2>
+      <a class="text-btn" href="incidents.html">View All</a>
+    </div>
+    <div class="incident-list" id="dashIncidentList">
+      <article>
+        <strong>Loading...</strong>
+        <small>Fetching incidents...</small>
+        <span class="badge pending">—</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- TREASURY & PAYMENTS -->
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Treasury &amp; Payments</h2>
+      <a class="text-btn" href="payments.html">View All</a>
+    </div>
+    <div style="margin-bottom:10px; display:flex; gap:10px; flex-wrap:wrap;">
+      <div style="flex:1; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:10px; padding:10px 14px;">
+        <small style="color:#15803d; font-weight:600; font-size:11px;">COLLECTED THIS MONTH</small>
+        <div id="dashCollectedAmount" style="font-size:20px; font-weight:800; color:#166534;">&#8369;0</div>
+        <small style="color:#16a34a;">Recorded payments</small>
+      </div>
+      <div style="flex:1; background:#fffbeb; border:1px solid #fde68a; border-radius:10px; padding:10px 14px;">
+        <small style="color:#92400e; font-weight:600; font-size:11px;">FOR COLLECTION</small>
+        <div id="dashForCollectionAmount" style="font-size:20px; font-weight:800; color:#78350f;">&#8369;0</div>
+        <small style="color:#d97706;">Awaiting payment</small>
+      </div>
+    </div>
+    <div id="dashPaymentsList" style="display:flex; flex-direction:column; gap:8px;">
+      <div style="text-align:center; padding:18px; color:var(--muted); font-size:12px;">No payment transactions recorded yet.</div>
+    </div>
+  </section>
+
+  <!-- RECENT AUDIT TRAIL -->
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Recent Audit Trail</h2>
+      <a class="text-btn" href="logs.html">Full Log</a>
+    </div>
+    <div id="dashAuditList" style="display:flex; flex-direction:column; gap:7px;">
+      <div style="text-align:center; padding:20px; color:var(--muted);">Loading audit events...</div>
+    </div>
+  </section>
+
+</div>
+
+<!-- QUICK ACTION ROW -->
+<div class="quick-actions">
+  <a href="requests.html">Process Requests</a>
+  <a href="incidents.html">Review Incidents</a>
+  <a href="announcements.html">Post Announcement</a>
+  <a href="payments.html">Treasury</a>
+  <a href="logs.html">Audit Logs</a>
+</div>
+<footer class="app-page-footer">
+  <span>&copy; 2026 E-Viejo &bull; Barangay Guadalupe Viejo, Makati City</span>
+  <span>Republic of the Philippines &bull; Data Privacy Act (RA 10173)</span>
+</footer>
+</main>
+      </div>
+    </section>  <script src="../script.js"></script>
+</body>
+</html>

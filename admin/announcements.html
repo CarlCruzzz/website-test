@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="E-Viejo — Barangay Guadalupe Viejo, Makati City digital resident services portal.">
+  <title>Manage Announcements | E-Viejo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/jpeg" href="../assets/viejo.jpg">
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+<section class="app-screen admin-theme">
+      <aside class="sidebar admin-side">
+      <a class="brand side-brand" href="index.html">
+        <div class="side-logo"><img src="../assets/viejo.jpg" alt="E-Viejo logo" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span>GV</span></div>
+        <div class="side-brand-copy"><strong>E-Viejo</strong><small>Admin Portal</small></div><span class="portal-pill">ADMIN</span>
+      </a>
+      <div class="side-welcome">Barangay administration</div>
+      <nav class="side-nav"><a class="side-link" href="index.html"><span class="side-icon">⌂</span><span>Dashboard</span></a><a class="side-link" href="requests.html"><span class="side-icon">▣</span><span>Requests</span></a><a class="side-link" href="residents.html"><span class="side-icon">♙</span><span>Residents</span></a><a class="side-link" href="incidents.html"><span class="side-icon">!</span><span>Incident Reports</span></a><a class="side-link" href="payments.html"><span class="side-icon">₱</span><span>Payments & Cash</span></a><a class="side-link active" href="announcements.html"><span class="side-icon">◉</span><span>Announcements</span></a><a class="side-link" href="reports.html"><span class="side-icon">▥</span><span>Reports & Analytics</span></a><a class="side-link" href="users.html"><span class="side-icon">⚙</span><span>Users & Roles</span></a><a class="side-link" href="logs.html"><span class="side-icon">⌁</span><span>Audit Logs</span></a></nav>
+      <div class="side-bottom">
+        <div class="side-help"><span>?</span><div><strong>Need help?</strong><small>Visit the barangay office</small></div></div>
+        <a class="logout" href="../index.html"><span class="side-icon">↪</span><span>Logout</span></a>
+      </div>
+    </aside>
+      <div class="app-content">
+        <header class="app-topbar">
+      <div><button class="mobile-menu" id="mobileMenu">☰</button><span class="page-label">Manage Announcements</span></div>
+      <div class="top-user"><span></span><div class="avatar">JD</div><strong>Juan Dela Cruz</strong><span></span></div>
+    </header>
+        <main class="page">
+<div class="page-heading"><div><span class="eyebrow">COMMUNICATION</span><h1>Manage announcements</h1></div></div>
+<div class="two-col"><form class="panel" id="announcementForm"><h2>Create announcement</h2><label>Title<input required placeholder="Announcement title"></label><label>Category<select><option>General</option><option>Event</option><option>Advisory</option><option>Emergency</option></select></label><label>Publish Date<input type="date"></label><label>Message<textarea required placeholder="Write the announcement..."></textarea></label><button class="btn btn-primary full" type="submit">Publish Announcement</button></form>
+<div class="panel"><h2>Published</h2><div id="publishedAnnouncementsPanel" class="announcement-list-dynamic"><div style="text-align:center; padding:16px; color:var(--muted); font-size:12px;">No announcements posted yet.</div></div></div></div>
+</main>
+      </div>
+    </section>  <script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="E-Viejo — Barangay Guadalupe Viejo, Makati City digital resident services portal.">
+  <title>Profile & Security | E-Viejo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/jpeg" href="../assets/viejo.jpg">
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+<section class="app-screen">
+      <aside class="sidebar ">
+      <a class="brand side-brand" href="resident.html">
+        <div class="side-logo"><img src="../assets/viejo.jpg" alt="E-Viejo logo" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span>GV</span></div>
+        <div class="side-brand-copy"><strong>E-Viejo</strong><small>Resident Portal</small></div>
+      </a>
+      <div class="side-welcome">Resident services</div>
+      <nav class="side-nav"><a class="side-link" href="resident.html"><span class="side-icon">⌂</span><span>Dashboard</span></a><a class="side-link" href="request.html"><span class="side-icon">▣</span><span>Request Services</span></a><a class="side-link" href="tracker.html"><span class="side-icon">⌁</span><span>Request Tracker</span></a><a class="side-link" href="digital-id.html"><span class="side-icon">▤</span><span>Digital ID</span></a><a class="side-link" href="physical-id.html"><span class="side-icon">▥</span><span>Physical ID</span></a><a class="side-link" href="payments.html"><span class="side-icon">₱</span><span>Payments (Cash)</span></a><a class="side-link" href="announcements.html"><span class="side-icon">◉</span><span>Announcements</span></a><a class="side-link active" href="profile.html"><span class="side-icon">♙</span><span>Profile & Security</span></a></nav>
+      <div class="side-bottom">
+        <div class="side-help"><span>?</span><div><strong>Need help?</strong><small>Visit the barangay office</small></div></div>
+        <a class="logout" href="../index.html"><span class="side-icon">↪</span><span>Logout</span></a>
+      </div>
+    </aside>
+      <div class="app-content">
+        <header class="app-topbar">
+      <div><button class="mobile-menu" id="mobileMenu">☰</button><span class="page-label">Profile & Security</span></div>
+     <div class="top-user"><span></span><div class="avatar">JD</div><strong>Juan Dela Cruz</strong><span></span></div>
+    </header>
+        <main class="page">
+<div class="page-heading"><div><span class="eyebrow">ACCOUNT</span><h1>Profile & Security</h1><p class="muted">Manage your resident information and account protection.</p></div></div>
+<div class="two-col"><div class="panel"><div class="profile-head"><div class="avatar" id="profileHeadAvatar">RU</div><div><h3 id="profileHeadName">Resident User</h3><small class="muted" id="profileHeadId">GV-2026-0001 • Verified Resident</small></div></div>
+<label>Full Name <small class="muted" style="font-weight:400;">(Official Record • Verified)</small><input id="profileInputName" placeholder="Full Name" disabled readonly style="background:#f1f5f9; cursor:not-allowed; opacity:0.85;"></label><label>Email<input id="profileInputEmail" placeholder="resident@email.com"></label><label>Mobile Number<input id="profileInputMobile" placeholder="09XX XXX XXXX"></label><label>Address<input id="profileInputAddress" placeholder="Guadalupe Viejo, Makati City"></label>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+  <label>Date of Birth <small class="muted" style="font-weight:400;">(Locked)</small><input id="profileInputDob" type="date" disabled readonly style="background:#f1f5f9; cursor:not-allowed; opacity:0.85;"></label>
+  <label>Gender
+    <select id="profileInputGender">
+      <option value="">Select</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+  </label>
+</div>
+<label>Civil Status
+  <select id="profileInputCivilStatus">
+    <option value="">Select</option>
+    <option value="Single">Single</option>
+    <option value="Married">Married</option>
+    <option value="Widowed">Widowed</option>
+    <option value="Separated">Separated</option>
+  </select>
+</label>
+<h3 style="margin-top:16px; font-size:14px; border-bottom:1px solid #e2e8f0; padding-bottom:6px;">Emergency Contact</h3>
+<label>Contact Name<input id="profileInputEmergencyName" placeholder="e.g. Maria Dela Cruz"></label>
+<label>Contact Phone<input id="profileInputEmergencyPhone" placeholder="09XX XXX XXXX"></label>
+<button class="btn btn-primary" id="saveProfileBtn" type="button" style="margin-top:12px;">Save Changes</button></div>
+<div class="panel"><h2>Security</h2>
+<div style="border-bottom: 1px solid #e2e8f0; padding-bottom: 16px; margin-bottom: 16px;">
+  <h3 style="font-size:14px; margin-bottom:8px;">Change Password</h3>
+  <label>Current Password<input type="password" id="profileInputCurrentPassword" placeholder="Enter current password"></label>
+  <label>New Password<input type="password" id="profileInputNewPassword" placeholder="Enter new password"></label>
+  <button class="btn btn-outline" id="changePasswordBtn" type="button" style="width:100%; margin-top:8px;">Update Password</button>
+</div>
+<div class="security-row"><span>Two-Factor Authentication</span><button class="toggle active" type="button">ON</button></div><div class="security-row"><span>Login notifications</span><button class="toggle active" type="button">ON</button></div><div class="security-row"><span>Barangay ID verification</span><button class="toggle active" type="button">ACTIVE</button></div><div class="security-callout">🔐 Never share your password or verification codes. Admin actions should be recorded in the system audit log.</div></div></div>
+<footer class="app-page-footer">
+  <span>&copy; 2026 E-Viejo &bull; Barangay Guadalupe Viejo, Makati City</span>
+  <span>Republic of the Philippines &bull; Data Privacy Act (RA 10173)</span>
+</footer>
+</main>
+      </div>
+    </section>  <script src="../script.js"></script>
+</body>
+</html>

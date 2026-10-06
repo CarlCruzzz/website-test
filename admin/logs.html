@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="E-Viejo — Barangay Guadalupe Viejo, Makati City digital resident services portal.">
+  <title>Audit Logs | E-Viejo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/jpeg" href="../assets/viejo.jpg">
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+
+  <section class="app-screen admin-theme">
+    <!-- SIDEBAR -->
+    <aside class="sidebar admin-side">
+      <a class="brand side-brand" href="index.html">
+        <div class="side-logo">
+          <img src="../assets/viejo.jpg" alt="E-Viejo logo" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+          <span>GV</span>
+        </div>
+        <div class="side-brand-copy">
+          <strong>E-Viejo</strong>
+          <small>Admin Portal</small>
+        </div>
+        <span class="portal-pill">ADMIN</span>
+      </a>
+      <div class="side-welcome">Barangay administration</div>
+      <nav class="side-nav">
+        <a class="side-link" href="index.html"><span class="side-icon">⌂</span><span>Dashboard</span></a>
+        <a class="side-link" href="requests.html"><span class="side-icon">▣</span><span>Requests</span></a>
+        <a class="side-link" href="residents.html"><span class="side-icon">♙</span><span>Residents</span></a>
+        <a class="side-link" href="incidents.html"><span class="side-icon">!</span><span>Incident Reports</span></a>
+        <a class="side-link" href="payments.html"><span class="side-icon">₱</span><span>Payments & Cash</span></a>
+        <a class="side-link" href="announcements.html"><span class="side-icon">◉</span><span>Announcements</span></a>
+        <a class="side-link" href="reports.html"><span class="side-icon">▥</span><span>Reports & Analytics</span></a>
+        <a class="side-link" href="users.html"><span class="side-icon">⚙</span><span>Users & Roles</span></a>
+        <a class="side-link active" href="logs.html"><span class="side-icon">⌁</span><span>Audit Logs</span></a>
+      </nav>
+      <div class="side-bottom">
+        <div class="side-help">
+          <span>?</span>
+          <div>
+            <strong>Need help?</strong>
+            <small>Visit the barangay office</small>
+          </div>
+        </div>
+        <a class="logout" href="../index.html"><span class="side-icon">↪</span><span>Logout</span></a>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <div class="app-content">
+      <header class="app-topbar">
+        <div>
+          <button class="mobile-menu" id="mobileMenu" type="button">☰</button>
+          <span class="page-label">Audit & Activity Logs</span>
+        </div>
+        <div class="top-user">
+          <span></span>
+          <div class="avatar">JD</div>
+          <strong>Juan Dela Cruz</strong>
+          <span></span>
+        </div>
+      </header>
+
+      <main class="page">
+        <!-- PAGE HEADING -->
+        <div class="page-heading">
+          <div>
+            <span class="eyebrow">GOVERNANCE & DATA PRIVACY (RA 10173)</span>
+            <h1>Audit & Activity Logs</h1>
+            <p class="muted">Tamper-evident log of administrative approvals, record modifications, blotter assignments, and financial transactions.</p>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn btn-outline" type="button" onclick="window.print()">Print Summary</button>
+          </div>
+        </div>
+
+
+        <!-- LOGS PANEL -->
+        <div class="panel">
+          <div class="table-toolbar">
+            <input type="search" class="search" id="auditLogSearch" placeholder="Search staff, reference ID, module, or details...">
+            <select id="auditLogModuleFilter">
+              <option value="">All Modules</option>
+              <option value="Requests">Document Requests</option>
+              <option value="Incidents & Blotter">Incidents & Blotter</option>
+              <option value="Resident Records">Resident Records</option>
+              <option value="Treasury & Payments">Treasury & Payments</option>
+              <option value="Staff & Access">Staff & Access</option>
+              <option value="System Security">System Security</option>
+            </select>
+            <select id="auditLogActionFilter">
+              <option value="">All Actions</option>
+              <option value="Approved">Approved</option>
+              <option value="Updated">Updated</option>
+              <option value="Created">Created</option>
+              <option value="Generated">Generated</option>
+              <option value="Payment Recorded">Payment Recorded</option>
+              <option value="Resolved">Resolved</option>
+              <option value="Access Granted">Access Granted</option>
+            </select>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Timestamp</th>
+                  <th>Staff / User</th>
+                  <th>Module</th>
+                  <th>Action</th>
+                  <th>Reference</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody id="auditLogsTableBody">
+                <!-- Populated dynamically by script.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </section>
+
+  <script src="../script.js"></script>
+</body>
+</html>

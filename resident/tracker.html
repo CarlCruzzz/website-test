@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="E-Viejo — Barangay Guadalupe Viejo, Makati City digital resident services portal.">
+  <title>Request Tracker | E-Viejo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/jpeg" href="../assets/viejo.jpg">
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+<section class="app-screen">
+      <aside class="sidebar ">
+      <a class="brand side-brand" href="resident.html">
+        <div class="side-logo"><img src="../assets/viejo.jpg" alt="E-Viejo logo" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span>GV</span></div>
+        <div class="side-brand-copy"><strong>E-Viejo</strong><small>Resident Portal</small></div>
+      </a>
+      <div class="side-welcome">Resident services</div>
+      <nav class="side-nav"><a class="side-link" href="resident.html"><span class="side-icon">⌂</span><span>Dashboard</span></a><a class="side-link" href="request.html"><span class="side-icon">▣</span><span>Request Services</span></a><a class="side-link active" href="tracker.html"><span class="side-icon">⌁</span><span>Request Tracker</span></a><a class="side-link" href="digital-id.html"><span class="side-icon">▤</span><span>Digital ID</span></a><a class="side-link" href="physical-id.html"><span class="side-icon">▥</span><span>Physical ID</span></a><a class="side-link" href="payments.html"><span class="side-icon">₱</span><span>Payments (Cash)</span></a><a class="side-link" href="announcements.html"><span class="side-icon">◉</span><span>Announcements</span></a><a class="side-link" href="profile.html"><span class="side-icon">♙</span><span>Profile & Security</span></a></nav>
+      <div class="side-bottom">
+        <div class="side-help"><span>?</span><div><strong>Need help?</strong><small>Visit the barangay office</small></div></div>
+        <a class="logout" href="../index.html"><span class="side-icon">↪</span><span>Logout</span></a>
+      </div>
+    </aside>
+      <div class="app-content">
+        <header class="app-topbar">
+      <div><button class="mobile-menu" id="mobileMenu">☰</button><span class="page-label">Request Tracker</span></div>
+       <div class="top-user"><span></span><div class="avatar">JD</div><strong>Juan Dela Cruz</strong><span></span></div>
+    </header>
+        <main class="page">
+<div class="page-heading"><div><span class="eyebrow">MY REQUESTS</span><h1>Track your requests</h1></div></div>
+<div class="panel"><div class="table-toolbar"><input id="trackerSearch" class="search" placeholder="Search request..."><select id="trackerFilter"><option>All Status</option><option>Pending</option><option>Approved</option><option>Ready for Pickup</option><option>Completed</option><option>Rejected</option></select></div><div class="table-wrap"><table><thead><tr><th>Reference</th><th>Document</th><th>Date</th><th>Status</th><th>Action</th></tr></thead><tbody id="residentRequestsBody"></tbody></table></div></div>
+<div class="notice"><strong>Tip:</strong> Open a request to view its complete status history and pickup instructions.</div>
+<footer class="app-page-footer">
+  <span>&copy; 2026 E-Viejo &bull; Barangay Guadalupe Viejo, Makati City</span>
+  <span>Republic of the Philippines &bull; Data Privacy Act (RA 10173)</span>
+</footer>
+</main>
+      </div>
+    </section>  <script src="../script.js"></script>
+</body>
+</html>

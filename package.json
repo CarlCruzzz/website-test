@@ -1,0 +1,24 @@
+{
+  "name": "e-viejo",
+  "version": "1.0.0",
+  "description": "Barangay Guadalupe Viejo Constituent ID Portal and Management System",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "barangay",
+    "guadalupe-viejo",
+    "constituent-id",
+    "makati"
+  ],
+  "author": "Barangay Guadalupe Viejo",
+  "license": "ISC",
+  "dependencies": {
+    "@google/genai": "^2.23.0",
+    "dotenv": "^18.0.0",
+    "express": "^5.2.1",
+    "multer": "^2.4.0"
+  }
+}

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="E-Viejo — Barangay Guadalupe Viejo, Makati City digital resident services portal.">
+  <title>Request Services & Complaints | E-Viejo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/jpeg" href="../assets/viejo.jpg">
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+  <section class="app-screen">
+    <aside class="sidebar">
+      <a class="brand side-brand" href="resident.html">
+        <div class="side-logo"><img src="../assets/viejo.jpg" alt="E-Viejo logo" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span>GV</span></div>
+        <div class="side-brand-copy"><strong>E-Viejo</strong><small>Resident Portal</small></div>
+      </a>
+      <div class="side-welcome">Resident services</div>
+      <nav class="side-nav">
+        <a class="side-link" href="resident.html"><span class="side-icon">⌂</span><span>Dashboard</span></a>
+        <a class="side-link active" href="request.html"><span class="side-icon">▣</span><span>Request Services</span></a>
+        <a class="side-link" href="tracker.html"><span class="side-icon">⌁</span><span>Request Tracker</span></a>
+        <a class="side-link" href="digital-id.html"><span class="side-icon">▤</span><span>Digital ID</span></a>
+        <a class="side-link" href="physical-id.html"><span class="side-icon">▥</span><span>Physical ID</span></a>
+        <a class="side-link" href="payments.html"><span class="side-icon">₱</span><span>Payments (Cash)</span></a>
+        <a class="side-link" href="announcements.html"><span class="side-icon">◉</span><span>Announcements</span></a>
+        <a class="side-link" href="profile.html"><span class="side-icon">♙</span><span>Profile & Security</span></a>
+      </nav>
+      <div class="side-bottom">
+        <div class="side-help"><span>?</span><div><strong>Need help?</strong><small>Visit the barangay office</small></div></div>
+        <a class="logout" href="../index.html"><span class="side-icon">↪</span><span>Logout</span></a>
+      </div>
+    </aside>
+
+    <div class="app-content">
+      <header class="app-topbar">
+        <div><button class="mobile-menu" id="mobileMenu" type="button">☰</button><span class="page-label">Request Services</span></div>
+        <div class="top-user"><span></span><div class="avatar">JD</div><strong>Juan Dela Cruz</strong><span></span></div>
+      </header>
+
+      <main class="page">
+        <!-- TOP HEADING -->
+        <div class="page-heading">
+          <div>
+            <span class="eyebrow">ONLINE SERVICES & BLOTTER</span>
+            <h1>Barangay Services & Requests</h1>
+            <p class="muted">Request official certificates or file community complaints for officer action.</p>
+          </div>
+        </div>
+
+        <!-- SECTION 1: OFFICIAL DOCUMENTS -->
+        <div style="margin-bottom:14px;">
+          <h2 style="font-size:17px; color:var(--blue); margin:0 0 4px 0;">Official Documents & Certifications</h2>
+          <small class="muted">Processed by the Barangay Secretary's Office.</small>
+        </div>
+
+        <div class="service-grid request-services">
+          <button class="service-card" data-request="Barangay Clearance"><span class="icon blue">▤</span><strong>Barangay Clearance</strong><small>General clearance for various legal purposes.</small><b>Request Now →</b></button>
+          <button class="service-card" data-request="Certificate of Indigency"><span class="icon green">▤</span><strong>Certificate of Indigency</strong><small>For residents applying for financial assistance.</small><b>Request Now →</b></button>
+          <button class="service-card" data-request="Barangay Certificate"><span class="icon blue">▤</span><strong>Barangay Certificate</strong><small>Certification for residency and other purposes.</small><b>Request Now →</b></button>
+          <button class="service-card" data-request="Certificate of Residency"><span class="icon blue">▤</span><strong>Certificate of Residency</strong><small>Proof of residency in Guadalupe Viejo.</small><b>Request Now →</b></button>
+          <button class="service-card" data-request="Business Clearance"><span class="icon purple">▤</span><strong>Business Clearance</strong><small>For business permits and renewals.</small><b>Request Now →</b></button>
+          <button class="service-card" data-request="Permit to Use"><span class="icon yellow">▤</span><strong>Permit to Use</strong><small>For events, gatherings or establishments.</small><b>Request Now →</b></button>
+        </div>
+
+        <!-- SECTION 2: COMMUNITY SAFETY & BLOTTER COMPLAINTS -->
+        <div style="margin-top:36px; margin-bottom:14px;">
+          <div class="page-heading" style="margin-bottom:10px;">
+            <div>
+              <span class="eyebrow">COMMUNITY SAFETY & PEACE AND ORDER</span>
+              <h2 style="font-size:18px; color:var(--blue); margin:2px 0 0 0;">Community Blotter & Resident Complaints</h2>
+              <p class="muted" style="margin-top:2px; font-size:13px;">Report neighborhood disturbances, noise complaints, traffic obstructions, or safety hazards to the Barangay.</p>
+            </div>
+          </div>
+
+          <div class="service-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+            <button class="service-card" id="openResidentComplaintCardBtn" type="button" style="border-left:4px solid var(--red); text-align:left; cursor:pointer;">
+              <span class="icon" style="background:#fff1f1; color:var(--red); font-size:22px;">⚠️</span>
+              <strong style="color:var(--ink); font-size:15px; margin:10px 0 4px 0;">File an Official Complaint / Blotter</strong>
+              <small style="line-height:1.5;">Report loud karaoke, neighbor disputes, illegal parking, blocked roads, or community sanitation hazards. A barangay peace officer will be assigned to investigate.</small>
+              <b style="color:var(--red); margin-top:14px; display:inline-block; font-size:12px;">File Complaint Now →</b>
+            </button>
+          </div>
+        </div>
+
+        <!-- DOCUMENT REQUEST MODAL -->
+        <div id="requestModal" class="modal hidden">
+          <div class="modal-card resident-modal-card" style="max-height:calc(100vh - 40px); overflow-y:auto; box-sizing:border-box;">
+            <button class="modal-close" type="button" aria-label="Close dialog">&times;</button>
+            <span class="eyebrow">NEW OFFICIAL REQUEST</span>
+            <h2 id="modalTitle">Barangay Clearance</h2>
+            <p class="muted" style="margin-top:2px; font-size:13px;">Review and fill up your personal information and service details below.</p>
+            
+            <form id="requestForm" style="margin-top:16px;">
+              <!-- SECTION 1: PERSONAL INFORMATION -->
+              <div style="border-bottom:1px solid #edf0f4; padding-bottom:14px; margin-bottom:16px;">
+                <h3 style="font-size:14px; color:var(--blue); margin:0 0 10px 0; display:flex; align-items:center; gap:6px;">
+                  <span>👤</span> Personal Information
+                </h3>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px;">
+                  <label>Full Name
+                    <input type="text" id="reqFullName" name="fullName" required placeholder="Full Name">
+                  </label>
+                  <label>Barangay ID No.
+                    <input type="text" id="reqResidentId" name="residentId" placeholder="e.g. GV-2026-0001" readonly style="background:#f8fafc; font-weight:600;">
+                  </label>
+                  <label>Contact Mobile Number
+                    <input type="tel" id="reqContact" name="contact" required placeholder="09XX XXX XXXX">
+                  </label>
+                  <label>Email Address
+                    <input type="email" id="reqEmail" name="email" required placeholder="resident@email.com">
+                  </label>
+                  <label class="span-2" style="grid-column: 1 / -1;">Complete Address in Guadalupe Viejo
+                    <input type="text" id="reqAddress" name="address" required placeholder="House No., Street, Guadalupe Viejo, Makati City">
+                  </label>
+                  <label>Date of Birth
+                    <input type="date" id="reqDob" name="dob">
+                  </label>
+                  <label>Civil Status
+                    <select id="reqCivilStatus" name="civilStatus">
+                      <option value="Single">Single</option>
+                      <option value="Married">Married</option>
+                      <option value="Widowed">Widowed</option>
+                      <option value="Separated">Separated</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+
+              <!-- SECTION 2: SERVICE SPECIFIC REQUIREMENTS -->
+              <div id="serviceSpecificSection" style="border-bottom:1px solid #edf0f4; padding-bottom:14px; margin-bottom:16px;">
+                <h3 style="font-size:14px; color:var(--blue); margin:0 0 10px 0; display:flex; align-items:center; gap:6px;">
+                  <span>📋</span> Service &amp; Requirement Details
+                </h3>
+
+                <!-- Common Purpose Fields -->
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px; margin-bottom:12px;">
+                  <label>Purpose of Request
+                    <select id="requestPurpose" name="purpose" required>
+                      <option value="Employment">Employment</option>
+                      <option value="School Requirement">School Requirement</option>
+                      <option value="Financial Assistance">Financial Assistance</option>
+                      <option value="Business">Business</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </label>
+                  <label>Preferred Release
+                    <select id="requestRelease" name="release">
+                      <option value="Claim at Barangay Hall">Claim at Barangay Hall</option>
+                      <option value="As advised by barangay staff">As advised by barangay staff</option>
+                    </select>
+                  </label>
+                </div>
+
+                <!-- Dynamic Service Specific Container -->
+                <div id="serviceSpecificFields">
+                  <!-- Injected via JavaScript based on selected document -->
+                </div>
+
+                <label style="margin-top:10px;">Purpose Details / Additional Remarks
+                  <textarea id="reqPurposeDetails" name="purposeDetails" placeholder="Provide any additional specifications or context for your request..." style="min-height:70px;"></textarea>
+                </label>
+              </div>
+
+              <!-- CERTIFICATION & SUBMIT -->
+              <label class="check" style="margin-bottom:16px; font-size:12px; line-height:1.4;">
+                <input type="checkbox" id="reqCertify" required>
+                <span>I certify under penalty of law that the above information is true, correct, and submitted for legitimate official purposes.</span>
+              </label>
+
+              <div style="display:flex; justify-content:flex-end; gap:10px;">
+                <button class="btn btn-outline" id="cancelRequestModalBtn" type="button">Cancel</button>
+                <button class="btn btn-primary" type="submit">Submit Request</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- =====================================================
+             RESIDENT COMPLAINT & INCIDENT BLOTTER MODAL
+             ===================================================== -->
+        <div id="residentComplaintModal" class="modal hidden">
+          <div class="modal-card incident-modal-card">
+            <button class="modal-close" id="closeResidentComplaintModal" type="button" aria-label="Close">&times;</button>
+            
+            <div class="privacy-notice-badge" style="background:#fff1f1; color:var(--red); border:1px solid #ffc9c9; margin-bottom:10px; display:inline-block; font-size:10px; font-weight:800; padding:4px 9px; border-radius:6px; text-transform:uppercase; letter-spacing:0.04em;">
+              BARANGAY GUADALUPE VIEJO • COMMUNITY BLOTTER & PEACE DESK
+            </div>
+
+            <h2 style="margin:0 0 4px 0; color:var(--blue); font-size:20px;">File a Complaint / Incident Report</h2>
+            <p class="muted" style="margin:0 0 16px 0; font-size:12px;">Submit your report to the Barangay Peace and Order Desk. A responding officer will be assigned to investigate and mediate.</p>
+
+            <form id="residentComplaintForm">
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px;">
+                <label>Complainant Name
+                  <input type="text" id="compName" value="Juan Dela Cruz" readonly style="background:#f8fafc; font-weight:600;">
+                </label>
+                <label>Contact Mobile Number
+                  <input type="tel" id="compContact" value="+63 917 123 4567" required>
+                </label>
+                <label>Nature / Type of Incident
+                  <select id="compType" required>
+                    <option value="Noise Complaint">Noise Disturbance / Loud Karaoke</option>
+                    <option value="Neighborhood Dispute">Neighborhood Dispute / Disturbance</option>
+                    <option value="Traffic Violation & Obstruction">Traffic Obstruction / Blocked Driveway</option>
+                    <option value="Illegal Parking">Illegal Parking</option>
+                    <option value="Waste Disposal Non-Compliance">Garbage / Sanitation Non-Compliance</option>
+                    <option value="Streetlight Outage & Hazard">Streetlight Outage & Safety Hazard</option>
+                    <option value="Public Disturbance">Public Disturbance / Altercation</option>
+                    <option value="Other Community Incident">Other Barangay Concern</option>
+                  </select>
+                </label>
+                <label>Incident Location in Barangay
+                  <input type="text" id="compLocation" placeholder="e.g. 124 P. Burgos St. / Corner Coronado" required>
+                </label>
+                <label>Person(s) Involved / Respondent
+                  <input type="text" id="compRespondent" placeholder="Name or description (or leave Unknown)">
+                </label>
+                <label>Approximate Date & Time
+                  <input type="text" id="compTime" placeholder="e.g. Today around 9:30 PM" required>
+                </label>
+              </div>
+
+              <label style="margin-bottom:12px;">
+                Narrative Statement of Complaint / Details
+                <textarea id="compDetails" placeholder="Narrate what occurred, specific disturbance, vehicle plate number, or immediate concern..." required style="min-height:90px;"></textarea>
+              </label>
+
+              <label class="check" style="margin-bottom:14px; font-size:12px;">
+                <input type="checkbox" id="compCertify" required>
+                <span>I certify under penalty of law that the information provided is truthful and submitted in good faith under Republic Act No. 7160 (Katarungang Pambarangay) and RA 10173.</span>
+              </label>
+
+              <div style="display:flex; justify-content:flex-end; gap:10px; border-top:1px solid #edf0f4; padding-top:16px;">
+                <button class="btn btn-outline" id="cancelResidentComplaintModal" type="button">Cancel</button>
+                <button class="btn btn-primary" type="submit" style="background:var(--red); border-color:var(--red);">Submit Official Complaint</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <footer class="app-page-footer">
+          <span>&copy; 2026 E-Viejo &bull; Barangay Guadalupe Viejo, Makati City</span>
+          <span>Republic of the Philippines &bull; Data Privacy Act (RA 10173)</span>
+        </footer>
+      </main>
+    </div>
+  </section>
+
+  <script src="../script.js"></script>
+</body>
+</html>
