@@ -1,24 +1,18 @@
 {
-  "name": "e-viejo",
+  "name": "e-viejo-test-automation",
   "version": "1.0.0",
-  "description": "Barangay Guadalupe Viejo Constituent ID Portal and Management System",
-  "main": "server.js",
+  "private": true,
+  "description": "Playwright test automation for the E-Viejo Barangay Guadalupe Viejo portal",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node --watch server.js"
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:smoke": "playwright test tests/public.spec.js tests/auth.spec.js",
+    "test:resident": "playwright test tests/resident.spec.js",
+    "test:api": "playwright test tests/api.spec.js",
+    "report": "playwright show-report playwright-report"
   },
-  "keywords": [
-    "barangay",
-    "guadalupe-viejo",
-    "constituent-id",
-    "makati"
-  ],
-  "author": "Barangay Guadalupe Viejo",
-  "license": "ISC",
-  "dependencies": {
-    "@google/genai": "^2.23.0",
-    "dotenv": "^18.0.0",
-    "express": "^5.2.1",
-    "multer": "^2.4.0"
+  "devDependencies": {
+    "@playwright/test": "^1.55.0"
   }
 }
